@@ -1,0 +1,45 @@
+{
+  "name": "blog",
+  "version": "0.0.1",
+  "description": "just a blog",
+  "main": "index.js",
+  "scripts": {
+    "push": "dev build test",
+    "start": "parcel src/index.html",
+    "build": "dev build test",
+    "test": "dev build test"
+  },
+  "alias": {
+    "vue": "./node_modules/vue/dist/vue.common.js",
+    "components": "./src/components/",
+    "@": "./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jardenliu/blog.git"
+  },
+  "keywords": [
+    "blog",
+    "front-end",
+    "hackintosh",
+    "js",
+    "nodejs"
+  ],
+  "author": "jardenliu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jardenliu/blog/issues"
+  },
+  "homepage": "https://github.com/jardenliu/blog#readme",
+  "dependencies": {
+    "components": "^0.1.0",
+    "vue": "^2.5.17",
+    "vue-hot-reload-api": "^2.3.1",
+    "vue-router": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/component-compiler-utils": "^2.2.0",
+    "parcel-bundler": "^1.10.3",
+    "vue-template-compiler": "^2.5.17"
+  }
+}
