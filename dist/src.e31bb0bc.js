@@ -11319,7 +11319,7 @@ exports.reload = tryWrap(function (id, options) {
   })
 })
 
-},{}],"components/pages/app.vue":[function(require,module,exports) {
+},{}],"components/packages/navbar/src/navbar.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11332,7 +11332,92 @@ exports.default = void 0;
 //
 //
 //
+var _default = {};
+exports.default = _default;
+        var $c229a7 = exports.default || module.exports;
+      
+      if (typeof $c229a7 === 'function') {
+        $c229a7 = $c229a7.options;
+      }
+    
+        /* template */
+        Object.assign($c229a7, (function () {
+          var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [_vm._v("\n  navbar\n")])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+          return {
+            render: render,
+            staticRenderFns: staticRenderFns,
+            _compiled: true,
+            _scopeId: null,
+            functional: undefined
+          };
+        })());
+      
+    /* hot reload */
+    (function () {
+      if (module.hot) {
+        var api = require('vue-hot-reload-api');
+        api.install(require('vue'));
+        if (api.compatible) {
+          module.hot.accept();
+          if (!module.hot.data) {
+            api.createRecord('$c229a7', $c229a7);
+          } else {
+            api.reload('$c229a7', $c229a7);
+          }
+        }
+
+        
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+      }
+    })();
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/packages/navbar/index.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _navbar = _interopRequireDefault(require("./src/navbar.vue"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var _default = _navbar.default;
+exports.default = _default;
+},{"./src/navbar.vue":"components/packages/navbar/src/navbar.vue"}],"components/pages/app.vue":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _navbar = _interopRequireDefault(require("components/packages/navbar"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//
+//
+//
+//
+//
+//
+//
 var _default = {
+  components: {
+    navbar: _navbar.default
+  },
   created: function created() {},
   mounted: function mounted() {}
 };
@@ -11349,7 +11434,12 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "app" }, [_vm._v("\n  blog\n")])
+  return _c(
+    "div",
+    { staticClass: "app" },
+    [_c("navbar"), _vm._v(" "), _c("router-view")],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -11384,7 +11474,7 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"../node_modules/vue-router/dist/vue-router.esm.js":[function(require,module,exports) {
+},{"components/packages/navbar":"components/packages/navbar/index.js","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"../node_modules/vue-router/dist/vue-router.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13977,6 +14067,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _vue.default.use(_vueRouter.default);
 
 var router = new _vueRouter.default({
+  // mode: "abstract",
   routes: [{
     path: '/',
     component: _app.default
@@ -13984,19 +14075,34 @@ var router = new _vueRouter.default({
 });
 var _default = router;
 exports.default = _default;
-},{"vue":"../node_modules/vue/dist/vue.common.js","../components/pages/app":"components/pages/app.vue","vue-router":"../node_modules/vue-router/dist/vue-router.esm.js"}],"index.js":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.common.js","../components/pages/app":"components/pages/app.vue","vue-router":"../node_modules/vue-router/dist/vue-router.esm.js"}],"../node_modules/reset-css/reset.css":[function(require,module,exports) {
+
+        var reloadCSS = require('_css_loader');
+        module.hot.dispose(reloadCSS);
+        module.hot.accept(reloadCSS);
+      
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"styles/app.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
 
 var _router = _interopRequireDefault(require("./router"));
 
+require("reset-css");
+
+require("./styles/app.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var app = new _vue.default({
+new _vue.default({
   router: _router.default
 }).$mount('#app');
-},{"vue":"../node_modules/vue/dist/vue.common.js","./router":"router/index.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"vue":"../node_modules/vue/dist/vue.common.js","./router":"router/index.js","reset-css":"../node_modules/reset-css/reset.css","./styles/app.scss":"styles/app.scss"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -14023,7 +14129,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50333" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60859" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

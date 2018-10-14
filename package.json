@@ -33,6 +33,7 @@
   "homepage": "https://github.com/jardenliu/blog#readme",
   "dependencies": {
     "components": "^0.1.0",
+    "reset-css": "^4.0.1",
     "vue": "^2.5.17",
     "vue-hot-reload-api": "^2.3.1",
     "vue-router": "^3.0.1"
@@ -40,6 +41,7 @@
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.2.0",
     "parcel-bundler": "^1.10.3",
+    "sass": "^1.14.2",
     "vue-template-compiler": "^2.5.17"
   }
 }

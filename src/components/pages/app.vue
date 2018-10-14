@@ -1,11 +1,15 @@
 <template>
   <div class="app">
-    blog
+    <navbar></navbar>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import navbar from 'components/packages/navbar'
+
 export default {
+  components: { navbar },
   created() {
   },
   mounted() {
