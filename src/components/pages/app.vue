@@ -2,46 +2,12 @@
   <div class="app">
     <navbar :config="headerConfig"></navbar>
     <div class="content">
-      <div style="background:white;margin-top:10px;padding:20px;">
-        正文
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+      <div class="article" style=" height:1000px">
+        正文1
+      </div>
+
+      <div class="article" style=" height:1000px">
+        正文2
       </div>
     </div>
     <!-- <router-view></router-view> -->
@@ -65,7 +31,7 @@ export default {
   created() {
   },
   mounted() {
-    this.bindWindowScrollEvent()
+    // this.bindWindowScrollEvent()
   },
   methods: {
     bindWindowScrollEvent() {
@@ -91,6 +57,13 @@ export default {
 
 .content {
   width: calc(100vw - 300px);
+  margin-left: 300px;
+}
+
+.article {
+  background: white;
+  margin: 30px;
+  padding: 20px;
 }
 
 @media screen and (max-width: 800px) {
@@ -99,8 +72,15 @@ export default {
     flex-direction: column;
   }
 
+  .article {
+    background: white;
+    margin: 10px 0;
+    padding: 20px;
+  }
+
   .content {
     width: calc(100vw);
+    margin: 0;
   }
 }
 </style>

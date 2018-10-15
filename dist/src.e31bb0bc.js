@@ -11009,6 +11009,133 @@ Vue.compile = compileToFunctions;
 module.exports = Vue;
 },{}],"assets/logo.jpg":[function(require,module,exports) {
 module.exports = "/logo.ed8fc6de.jpg";
+},{}],"../node_modules/throttle-debounce/index.esm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.throttle = throttle;
+exports.debounce = debounce;
+
+/* eslint-disable no-undefined,no-param-reassign,no-shadow */
+
+/**
+ * Throttle execution of a function. Especially useful for rate limiting
+ * execution of handlers on events like resize and scroll.
+ *
+ * @param  {Number}    delay          A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
+ * @param  {Boolean}   [noTrailing]   Optional, defaults to false. If noTrailing is true, callback will only execute every `delay` milliseconds while the
+ *                                    throttled-function is being called. If noTrailing is false or unspecified, callback will be executed one final time
+ *                                    after the last throttled-function call. (After the throttled-function has not been called for `delay` milliseconds,
+ *                                    the internal counter is reset)
+ * @param  {Function}  callback       A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
+ *                                    to `callback` when the throttled-function is executed.
+ * @param  {Boolean}   [debounceMode] If `debounceMode` is true (at begin), schedule `clear` to execute after `delay` ms. If `debounceMode` is false (at end),
+ *                                    schedule `callback` to execute after `delay` ms.
+ *
+ * @return {Function}  A new, throttled, function.
+ */
+function throttle(delay, noTrailing, callback, debounceMode) {
+  /*
+   * After wrapper has stopped being called, this timeout ensures that
+   * `callback` is executed at the proper times in `throttle` and `end`
+   * debounce modes.
+   */
+  var timeoutID; // Keep track of the last time `callback` was executed.
+
+  var lastExec = 0; // `noTrailing` defaults to falsy.
+
+  if (typeof noTrailing !== 'boolean') {
+    debounceMode = callback;
+    callback = noTrailing;
+    noTrailing = undefined;
+  }
+  /*
+   * The `wrapper` function encapsulates all of the throttling / debouncing
+   * functionality and when executed will limit the rate at which `callback`
+   * is executed.
+   */
+
+
+  function wrapper() {
+    var self = this;
+    var elapsed = Number(new Date()) - lastExec;
+    var args = arguments; // Execute `callback` and update the `lastExec` timestamp.
+
+    function exec() {
+      lastExec = Number(new Date());
+      callback.apply(self, args);
+    }
+    /*
+     * If `debounceMode` is true (at begin) this is used to clear the flag
+     * to allow future `callback` executions.
+     */
+
+
+    function clear() {
+      timeoutID = undefined;
+    }
+
+    if (debounceMode && !timeoutID) {
+      /*
+       * Since `wrapper` is being called for the first time and
+       * `debounceMode` is true (at begin), execute `callback`.
+       */
+      exec();
+    } // Clear any existing timeout.
+
+
+    if (timeoutID) {
+      clearTimeout(timeoutID);
+    }
+
+    if (debounceMode === undefined && elapsed > delay) {
+      /*
+       * In throttle mode, if `delay` time has been exceeded, execute
+       * `callback`.
+       */
+      exec();
+    } else if (noTrailing !== true) {
+      /*
+       * In trailing throttle mode, since `delay` time has not been
+       * exceeded, schedule `callback` to execute `delay` ms after most
+       * recent execution.
+       *
+       * If `debounceMode` is true (at begin), schedule `clear` to execute
+       * after `delay` ms.
+       *
+       * If `debounceMode` is false (at end), schedule `callback` to
+       * execute after `delay` ms.
+       */
+      timeoutID = setTimeout(debounceMode ? clear : exec, debounceMode === undefined ? delay - elapsed : delay);
+    }
+  } // Return the wrapper function.
+
+
+  return wrapper;
+}
+/* eslint-disable no-undefined */
+
+/**
+ * Debounce execution of a function. Debouncing, unlike throttling,
+ * guarantees that a function is only executed a single time, either at the
+ * very beginning of a series of calls, or at the very end.
+ *
+ * @param  {Number}   delay         A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
+ * @param  {Boolean}  [atBegin]     Optional, defaults to false. If atBegin is false or unspecified, callback will only be executed `delay` milliseconds
+ *                                  after the last debounced-function call. If atBegin is true, callback will be executed only at the first debounced-function call.
+ *                                  (After the throttled-function has not been called for `delay` milliseconds, the internal counter is reset).
+ * @param  {Function} callback      A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
+ *                                  to `callback` when the debounced-function is executed.
+ *
+ * @return {Function} A new, debounced function.
+ */
+
+
+function debounce(delay, atBegin, callback) {
+  return callback === undefined ? throttle(delay, atBegin, false) : throttle(delay, callback, atBegin !== false);
+}
 },{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
@@ -11321,7 +11448,7 @@ exports.reload = tryWrap(function (id, options) {
   })
 })
 
-},{}],"components/packages/navbar/src/navbar.vue":[function(require,module,exports) {
+},{}],"components/packages/navbar/navbar.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11331,63 +11458,39 @@ exports.default = void 0;
 
 var _logo = _interopRequireDefault(require("assets/logo.jpg"));
 
+var _throttleDebounce = require("throttle-debounce");
+
+var _computed;
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var _default = {
+  data: function data() {
+    return {
+      overlayHeight: 110,
+      avatarSize: 120
+    };
+  },
   props: {
     config: {
       type: Object,
       default: function _default() {}
     }
   },
-  computed: {
+  mounted: function mounted() {
+    window.addEventListener('scroll', (0, _throttleDebounce.throttle)(10, this.handleScroll));
+  },
+  methods: {
+    handleScroll: function handleScroll(e) {
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+      var top = scrollTop < 60 ? 110 - scrollTop : 50;
+      this.overlayHeight = scrollTop < 60 ? 110 - scrollTop : 50;
+      this.avatarSize = scrollTop < 80 ? 120 - scrollTop : 40;
+    }
+  },
+  computed: (_computed = {
     navbarSty: function navbarSty() {
       return {
         'background': this.config.bg
@@ -11395,6 +11498,7 @@ var _default = {
     },
     overlaySty: function overlaySty() {
       return {
+        'height': "".concat(this.overlayHeight, "px"),
         'background-color': this.config.overlay,
         'background-image': this.config.img ? "url(".concat(this.config.img, ")") : ''
       };
@@ -11402,17 +11506,28 @@ var _default = {
     avatarSrc: function avatarSrc() {
       return this.config.avatar ? this.config.avatar : _logo.default;
     }
-  }
+  }, _defineProperty(_computed, "navbarSty", function navbarSty() {
+    return {
+      'background': this.config.bg
+    };
+  }), _defineProperty(_computed, "avatarSty", function avatarSty() {
+    return {
+      'height': "".concat(this.avatarSize, "px"),
+      'width': "".concat(this.avatarSize, "px"),
+      'top': "".concat(5 + (this.avatarSize - 40) / 80 * 5, "px"),
+      'border-width': "".concat((this.avatarSize - 40) / 80 * 4 + 1, "px")
+    };
+  }), _computed)
 };
 exports.default = _default;
-        var $c229a7 = exports.default || module.exports;
+        var $6d43a0 = exports.default || module.exports;
       
-      if (typeof $c229a7 === 'function') {
-        $c229a7 = $c229a7.options;
+      if (typeof $6d43a0 === 'function') {
+        $6d43a0 = $6d43a0.options;
       }
     
         /* template */
-        Object.assign($c229a7, (function () {
+        Object.assign($6d43a0, (function () {
           var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -11420,12 +11535,8 @@ exports.default = _default;
   return _c("div", { staticClass: "navbar", style: _vm.navbarSty }, [
     _c("div", { staticClass: "overlay", style: _vm.overlaySty }),
     _vm._v(" "),
-    _c("div", { staticClass: "overlay-bar", style: _vm.overlaySty }, [
-      _c("img", { attrs: { src: _vm.avatarSrc } })
-    ]),
-    _vm._v(" "),
     _c("div", { staticClass: "user-avatar" }, [
-      _c("img", { attrs: { src: _vm.avatarSrc } })
+      _c("img", { style: _vm.avatarSty, attrs: { src: _vm.avatarSrc } })
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "content" }, [
@@ -11533,7 +11644,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: "data-v-c229a7",
+            _scopeId: "data-v-6d43a0",
             functional: undefined
           };
         })());
@@ -11546,9 +11657,9 @@ render._withStripped = true
         if (api.compatible) {
           module.hot.accept();
           if (!module.hot.data) {
-            api.createRecord('$c229a7', $c229a7);
+            api.createRecord('$6d43a0', $6d43a0);
           } else {
-            api.reload('$c229a7', $c229a7);
+            api.reload('$6d43a0', $6d43a0);
           }
         }
 
@@ -11559,7 +11670,7 @@ render._withStripped = true
       
       }
     })();
-},{"assets/logo.jpg":"assets/logo.jpg","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/packages/navbar/index.js":[function(require,module,exports) {
+},{"assets/logo.jpg":"assets/logo.jpg","throttle-debounce":"../node_modules/throttle-debounce/index.esm.js","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/packages/navbar/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11567,13 +11678,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
-var _navbar = _interopRequireDefault(require("./src/navbar.vue"));
+var _navbar = _interopRequireDefault(require("./navbar.vue"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var _default = _navbar.default;
 exports.default = _default;
-},{"./src/navbar.vue":"components/packages/navbar/src/navbar.vue"}],"../config.yml":[function(require,module,exports) {
+},{"./navbar.vue":"components/packages/navbar/navbar.vue"}],"../config.yml":[function(require,module,exports) {
 module.exports = {
   header: {
     bg: "#fff",
@@ -11588,133 +11699,6 @@ module.exports = {
     }
   }
 };
-},{}],"../node_modules/throttle-debounce/index.esm.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.throttle = throttle;
-exports.debounce = debounce;
-
-/* eslint-disable no-undefined,no-param-reassign,no-shadow */
-
-/**
- * Throttle execution of a function. Especially useful for rate limiting
- * execution of handlers on events like resize and scroll.
- *
- * @param  {Number}    delay          A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
- * @param  {Boolean}   [noTrailing]   Optional, defaults to false. If noTrailing is true, callback will only execute every `delay` milliseconds while the
- *                                    throttled-function is being called. If noTrailing is false or unspecified, callback will be executed one final time
- *                                    after the last throttled-function call. (After the throttled-function has not been called for `delay` milliseconds,
- *                                    the internal counter is reset)
- * @param  {Function}  callback       A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
- *                                    to `callback` when the throttled-function is executed.
- * @param  {Boolean}   [debounceMode] If `debounceMode` is true (at begin), schedule `clear` to execute after `delay` ms. If `debounceMode` is false (at end),
- *                                    schedule `callback` to execute after `delay` ms.
- *
- * @return {Function}  A new, throttled, function.
- */
-function throttle(delay, noTrailing, callback, debounceMode) {
-  /*
-   * After wrapper has stopped being called, this timeout ensures that
-   * `callback` is executed at the proper times in `throttle` and `end`
-   * debounce modes.
-   */
-  var timeoutID; // Keep track of the last time `callback` was executed.
-
-  var lastExec = 0; // `noTrailing` defaults to falsy.
-
-  if (typeof noTrailing !== 'boolean') {
-    debounceMode = callback;
-    callback = noTrailing;
-    noTrailing = undefined;
-  }
-  /*
-   * The `wrapper` function encapsulates all of the throttling / debouncing
-   * functionality and when executed will limit the rate at which `callback`
-   * is executed.
-   */
-
-
-  function wrapper() {
-    var self = this;
-    var elapsed = Number(new Date()) - lastExec;
-    var args = arguments; // Execute `callback` and update the `lastExec` timestamp.
-
-    function exec() {
-      lastExec = Number(new Date());
-      callback.apply(self, args);
-    }
-    /*
-     * If `debounceMode` is true (at begin) this is used to clear the flag
-     * to allow future `callback` executions.
-     */
-
-
-    function clear() {
-      timeoutID = undefined;
-    }
-
-    if (debounceMode && !timeoutID) {
-      /*
-       * Since `wrapper` is being called for the first time and
-       * `debounceMode` is true (at begin), execute `callback`.
-       */
-      exec();
-    } // Clear any existing timeout.
-
-
-    if (timeoutID) {
-      clearTimeout(timeoutID);
-    }
-
-    if (debounceMode === undefined && elapsed > delay) {
-      /*
-       * In throttle mode, if `delay` time has been exceeded, execute
-       * `callback`.
-       */
-      exec();
-    } else if (noTrailing !== true) {
-      /*
-       * In trailing throttle mode, since `delay` time has not been
-       * exceeded, schedule `callback` to execute `delay` ms after most
-       * recent execution.
-       *
-       * If `debounceMode` is true (at begin), schedule `clear` to execute
-       * after `delay` ms.
-       *
-       * If `debounceMode` is false (at end), schedule `callback` to
-       * execute after `delay` ms.
-       */
-      timeoutID = setTimeout(debounceMode ? clear : exec, debounceMode === undefined ? delay - elapsed : delay);
-    }
-  } // Return the wrapper function.
-
-
-  return wrapper;
-}
-/* eslint-disable no-undefined */
-
-/**
- * Debounce execution of a function. Debouncing, unlike throttling,
- * guarantees that a function is only executed a single time, either at the
- * very beginning of a series of calls, or at the very end.
- *
- * @param  {Number}   delay         A zero-or-greater delay in milliseconds. For event callbacks, values around 100 or 250 (or even higher) are most useful.
- * @param  {Boolean}  [atBegin]     Optional, defaults to false. If atBegin is false or unspecified, callback will only be executed `delay` milliseconds
- *                                  after the last debounced-function call. If atBegin is true, callback will be executed only at the first debounced-function call.
- *                                  (After the throttled-function has not been called for `delay` milliseconds, the internal counter is reset).
- * @param  {Function} callback      A function to be executed after delay milliseconds. The `this` context and all arguments are passed through, as-is,
- *                                  to `callback` when the debounced-function is executed.
- *
- * @return {Function} A new, debounced function.
- */
-
-
-function debounce(delay, atBegin, callback) {
-  return callback === undefined ? throttle(delay, atBegin, false) : throttle(delay, callback, atBegin !== false);
-}
 },{}],"components/pages/app.vue":[function(require,module,exports) {
 "use strict";
 
@@ -11747,40 +11731,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 console.log('config', _config.default);
 var _default = {
   components: {
@@ -11792,8 +11742,7 @@ var _default = {
     };
   },
   created: function created() {},
-  mounted: function mounted() {
-    this.bindWindowScrollEvent();
+  mounted: function mounted() {// this.bindWindowScrollEvent()
   },
   methods: {
     bindWindowScrollEvent: function bindWindowScrollEvent() {
@@ -11840,94 +11789,13 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "content" }, [
-      _c(
-        "div",
-        {
-          staticStyle: {
-            background: "white",
-            "margin-top": "10px",
-            padding: "20px"
-          }
-        },
-        [
-          _vm._v("\n      正文\n      "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br")
-        ]
-      )
+      _c("div", { staticClass: "article", staticStyle: { height: "1000px" } }, [
+        _vm._v("\n      正文1\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "article", staticStyle: { height: "1000px" } }, [
+        _vm._v("\n      正文2\n    ")
+      ])
     ])
   }
 ]
@@ -14618,7 +14486,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52371" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56285" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

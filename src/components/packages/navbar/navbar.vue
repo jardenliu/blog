@@ -1,11 +1,8 @@
 <template>
   <div class="navbar" :style="navbarSty">
     <div class="overlay" :style="overlaySty"></div>
-    <div class="overlay-bar" :style="overlaySty">
-      <img :src="avatarSrc">
-    </div>
     <div class="user-avatar">
-      <img :src="avatarSrc">
+      <img :src="avatarSrc" :style="avatarSty">
     </div>
     <div class="content">
       <div class="author">
@@ -47,12 +44,30 @@
 
 <script>
 import logoUrl from 'assets/logo.jpg'
+import { throttle, debounce } from 'throttle-debounce';
 
 export default {
+  data() {
+    return {
+      overlayHeight: 110,
+      avatarSize: 120
+    }
+  },
   props: {
     config: {
       type: Object,
       default: () => { }
+    }
+  },
+  mounted() {
+    window.addEventListener('scroll', throttle(10, this.handleScroll))
+  },
+  methods: {
+    handleScroll(e) {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      let top = scrollTop < 60 ? 110 - scrollTop : 50;
+      this.overlayHeight = scrollTop < 60 ? 110 - scrollTop : 50;
+      this.avatarSize = scrollTop < 80 ? 120 - scrollTop : 40;
     }
   },
   computed: {
@@ -63,12 +78,26 @@ export default {
     },
     overlaySty() {
       return {
+        'height': `${this.overlayHeight}px`,
         'background-color': this.config.overlay,
         'background-image': this.config.img ? `url(${this.config.img})` : ''
       }
     },
     avatarSrc() {
       return this.config.avatar ? this.config.avatar : logoUrl
+    },
+    navbarSty() {
+      return {
+        'background': this.config.bg
+      }
+    },
+    avatarSty() {
+      return {
+        'height': `${this.avatarSize}px`,
+        'width': `${this.avatarSize}px`,
+        'top': `${5 + (this.avatarSize - 40) / 80 * 5}px`,
+        'border-width': `${(this.avatarSize - 40) / 80 * 4 + 1}px`,
+      }
     }
   }
 }
@@ -86,7 +115,7 @@ $mail-bg: #ffd95c;
   width: 300px;
   height: 100vh;
   background: #fff;
-  position: relative;
+  position: fixed;
 }
 .overlay {
   width: 100%;
@@ -175,13 +204,11 @@ $mail-bg: #ffd95c;
 }
 
 .user-avatar {
-  width: 108px;
-  height: 108px;
-  border-radius: 50%;
+  width: 100%;
   position: absolute;
   top: 115px;
-  left: 50%;
-  margin-left: -65px;
+  display: flex;
+  justify-content: center;
   img {
     width: 120px;
     border: 5px solid #fff;
@@ -235,21 +262,42 @@ $mail-bg: #ffd95c;
   display: none;
 }
 
+@media screen and (min-width: 800px) {
+  .overlay {
+    height: 180px !important;
+  }
+
+  .user-avatar {
+    img {
+      width: 120px !important;
+      height: 120px !important;
+      border-width: 5px !important;
+    }
+  }
+}
+
 @media screen and (max-width: 800px) {
   .navbar {
     width: 100%;
     height: 340px;
+    position: relative;
   }
   .overlay {
     height: 110px;
+    position: fixed;
+    background-size: 100% 180px;
   }
 
   .content {
-    margin-top: 35px;
+    margin-top: 145px;
   }
 
   .user-avatar {
-    top: 10px;
+    top: 0;
+    position: fixed;
+    img {
+      position: absolute;
+    }
   }
   .social {
     width: 200px;
@@ -266,24 +314,6 @@ $mail-bg: #ffd95c;
   }
   .mobile-menus {
     display: flex;
-  }
-
-  .scrolled-to-body {
-    .overlay-bar {
-      position: fixed;
-      display: block;
-      z-index: 1;
-      height: 50px;
-      width: 100%;
-      top: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      img {
-        height: 40px;
-        border-radius: 50%;
-      }
-    }
   }
 }
 </style>
