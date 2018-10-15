@@ -1,0 +1,49 @@
+@function tint($color, $percentage) {
+  @return mix($color, white, $percentage);
+}
+
+@function shade($color, $percentage) {
+  @return mix($color, black, $percentage);
+}
+
+
+//Main Color
+$primary-color: #409EFF;
+
+//Secondary Color
+$success-color            : #67C23A;
+$warning-color            : #E6A23C;
+$danger-color             : #F56C6C;
+$info-color               : #2db7f5;
+
+// Neutral Color
+$primary-text-color       : #303133;
+$regular-text-color       : #606266;
+$secondary-text-color     : #909399;
+$placeholder-text-color   : #C0C4CC;
+
+$base-border-color        : #DCDFE6;
+$light-border-color       : #E4E7ED;
+$lighter-border-color     : #EBEEF5;
+$extra-light-border-color : #F2F6FC;
+
+$link-color               : #3399ff;
+$link-hover-color         : tint($link-color, 20%);
+$link-active-color        : shade($link-color, 5%);
+$selected-color           : fade($primary-color, 90%);
+
+$code-family              : Consolas,Menlo,Courier,monospace;
+
+$tooltip-color            : #fff;
+$subsidiary-color         : #9ea7b4;
+$rate-star-color          : #f5a623;
+
+
+// Shadow
+$shadow-color             : rgba(0, 0, 0, .2);
+$shadow-card              : 0 1px 1px 0 rgba(0,0,0,.1);
+$shadow-up                : 0 -1px 6px $shadow-color;
+$shadow-down              : 0 1px 6px $shadow-color;
+$shadow-left              : -1px 0 6px $shadow-color;
+$shadow-right             : 1px 0 6px $shadow-color;
+$shadow-base              : $shadow-down;

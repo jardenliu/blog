@@ -11007,6 +11007,8 @@ function getOuterHTML(el) {
 
 Vue.compile = compileToFunctions;
 module.exports = Vue;
+},{}],"assets/logo.jpg":[function(require,module,exports) {
+module.exports = "/logo.ed8fc6de.jpg";
 },{}],"../node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
 var bundleURL = null;
 
@@ -11326,13 +11328,72 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+var _logo = _interopRequireDefault(require("assets/logo.jpg"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 //
 //
 //
 //
 //
 //
-var _default = {};
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+var _default = {
+  props: {
+    config: {
+      type: Object,
+      default: function _default() {}
+    }
+  },
+  computed: {
+    navbarSty: function navbarSty() {
+      return {
+        'background': this.config.bg
+      };
+    },
+    overlaySty: function overlaySty() {
+      return {
+        'background-color': this.config.overlay,
+        'background-image': this.config.img ? "url(".concat(this.config.img, ")") : ''
+      };
+    },
+    avatarSrc: function avatarSrc() {
+      return this.config.avatar ? this.config.avatar : _logo.default;
+    }
+  }
+};
 exports.default = _default;
         var $c229a7 = exports.default || module.exports;
       
@@ -11346,16 +11407,99 @@ exports.default = _default;
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n  navbar\n")])
+  return _c("div", { staticClass: "navbar", style: _vm.navbarSty }, [
+    _c("div", { staticClass: "overlay", style: _vm.overlaySty }),
+    _vm._v(" "),
+    _c("div", { staticClass: "user-avatar" }, [
+      _c("img", { attrs: { src: _vm.avatarSrc } })
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "content" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      _vm._m(2),
+      _vm._v(" "),
+      _c("ul", { staticClass: "social" }, [
+        _c("li", { staticClass: "github" }, [
+          _c(
+            "a",
+            { attrs: { href: _vm.config.social.github, target: "__blank" } },
+            [_c("i", { staticClass: "iconfont icon-githublogo" })]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "qq" }, [
+          _c(
+            "a",
+            { attrs: { href: _vm.config.social.qq, target: "__blank" } },
+            [_c("i", { staticClass: "iconfont icon-qq" })]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "wechat" }, [
+          _c(
+            "a",
+            { attrs: { href: _vm.config.social.wechat, target: "__blank" } },
+            [_c("i", { staticClass: "iconfont icon-wechat" })]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "mail" }, [
+          _c(
+            "a",
+            { attrs: { href: _vm.config.social.mail, target: "__blank" } },
+            [_c("i", { staticClass: "iconfont icon-mail" })]
+          )
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "desc" }, [_vm._v("\n    @流君酱的部落阁\n  ")])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "author" }, [
+      _c("div", { staticClass: "title" }, [_vm._v("流君酱")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "subtitle" }, [_vm._v("jardenliu")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "menus" }, [
+      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("主页")])]),
+      _vm._v(" "),
+      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("标签")])]),
+      _vm._v(" "),
+      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("分类")])]),
+      _vm._v(" "),
+      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("关于")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "smart-menu" }, [
+      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("所有文章")])])
+    ])
+  }
+]
 render._withStripped = true
 
           return {
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: null,
+            _scopeId: "data-v-c229a7",
             functional: undefined
           };
         })());
@@ -11381,7 +11525,7 @@ render._withStripped = true
       
       }
     })();
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/packages/navbar/index.js":[function(require,module,exports) {
+},{"assets/logo.jpg":"assets/logo.jpg","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"components/packages/navbar/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11395,7 +11539,22 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var _default = _navbar.default;
 exports.default = _default;
-},{"./src/navbar.vue":"components/packages/navbar/src/navbar.vue"}],"components/pages/app.vue":[function(require,module,exports) {
+},{"./src/navbar.vue":"components/packages/navbar/src/navbar.vue"}],"../config.yml":[function(require,module,exports) {
+module.exports = {
+  header: {
+    bg: "#fff",
+    overlay: "#4d4d4d",
+    img: "https://jarden-image-storage.oss-cn-shenzhen.aliyuncs.com/gallery/starrySky.png",
+    avatar: "https://jarden-image-storage.oss-cn-shenzhen.aliyuncs.com/gallery/15191056.jpg",
+    social: {
+      github: "https://github.com/jardenliu",
+      qq: "http://wpa.qq.com/msgrd?v=3&uin=372002582&site=qq&menu=yes",
+      wechat: null,
+      mail: "mailto:jarden@qq.com"
+    }
+  }
+};
+},{}],"components/pages/app.vue":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11404,6 +11563,8 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = void 0;
 
 var _navbar = _interopRequireDefault(require("components/packages/navbar"));
+
+var _config = _interopRequireDefault(require("../../../config.yml"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -11414,9 +11575,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+console.log('config', _config.default);
 var _default = {
   components: {
     navbar: _navbar.default
+  },
+  data: function data() {
+    return {
+      headerConfig: _config.default.header || {}
+    };
   },
   created: function created() {},
   mounted: function mounted() {}
@@ -11437,7 +11605,13 @@ exports.default = _default;
   return _c(
     "div",
     { staticClass: "app" },
-    [_c("navbar"), _vm._v(" "), _c("router-view")],
+    [
+      _c("navbar", { attrs: { config: _vm.headerConfig } }),
+      _vm._v(" "),
+      _c("div", { staticStyle: { width: "calc(100vw - 300px)" } }, [
+        _vm._v("正文")
+      ])
+    ],
     1
   )
 }
@@ -11448,7 +11622,7 @@ render._withStripped = true
             render: render,
             staticRenderFns: staticRenderFns,
             _compiled: true,
-            _scopeId: null,
+            _scopeId: "data-v-baca1e",
             functional: undefined
           };
         })());
@@ -11474,7 +11648,7 @@ render._withStripped = true
       
       }
     })();
-},{"components/packages/navbar":"components/packages/navbar/index.js","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"../node_modules/vue-router/dist/vue-router.esm.js":[function(require,module,exports) {
+},{"components/packages/navbar":"components/packages/navbar/index.js","../../../config.yml":"../config.yml","_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js","vue-hot-reload-api":"../node_modules/vue-hot-reload-api/dist/index.js","vue":"../node_modules/vue/dist/vue.common.js"}],"../node_modules/vue-router/dist/vue-router.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14086,7 +14260,7 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
+},{"/Users/jarden/workspace/rebuild-blog/src/assets/fonts/iconfont.eot":[["iconfont.d73eab46.eot","assets/fonts/iconfont.eot"],"assets/fonts/iconfont.eot"],"/Users/jarden/workspace/rebuild-blog/src/assets/fonts/iconfont.ttf":[["iconfont.bed036a7.ttf","assets/fonts/iconfont.ttf"],"assets/fonts/iconfont.ttf"],"/Users/jarden/workspace/rebuild-blog/src/assets/fonts/iconfont.svg":[["iconfont.e03be5b3.svg","assets/fonts/iconfont.svg"],"assets/fonts/iconfont.svg"],"_css_loader":"../node_modules/parcel-bundler/src/builtins/css-loader.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _vue = _interopRequireDefault(require("vue"));
@@ -14129,7 +14303,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60859" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51789" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

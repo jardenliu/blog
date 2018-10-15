@@ -12,6 +12,9 @@
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js",
     "components": "./src/components/",
+    "assets": "./src/assets/",
+    "src": "./src/",
+    "styles": "./src/styles/",
     "@": "./src"
   },
   "repository": {
@@ -32,6 +35,7 @@
   },
   "homepage": "https://github.com/jardenliu/blog#readme",
   "dependencies": {
+    "assets": "^3.0.0",
     "components": "^0.1.0",
     "reset-css": "^4.0.1",
     "vue": "^2.5.17",

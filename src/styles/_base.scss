@@ -1,3 +1,19 @@
+@import './var';
+
 html,body{
   height: 100%;
+  background:#eaeaea;
+  color: $primary-text-color;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif; 
+}
+
+a {
+  text-decoration: none;
+  color: $regular-text-color;
+  &:hover {
+    color: tint($regular-text-color, 20%);
+  }
+  &:active {
+    color: shade($regular-text-color, 5%);
+  }
 }
