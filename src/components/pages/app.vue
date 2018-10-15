@@ -1,7 +1,9 @@
 <template>
   <div class="app">
     <navbar :config="headerConfig"></navbar>
-    <div style="width:calc(100vw - 300px)">正文</div>
+    <div class="content">
+      <div style="background:white;margin:30px;padding:20px;">正文</div>
+    </div>
     <!-- <router-view></router-view> -->
   </div>
 </template>
@@ -29,5 +31,20 @@ export default {
 <style lang="scss" scoped>
 .app {
   display: flex;
+}
+
+.content {
+  width: calc(100vw - 300px);
+}
+
+@media screen and (max-width: 800px) {
+  .app {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .content {
+    width: calc(100vw);
+  }
 }
 </style>

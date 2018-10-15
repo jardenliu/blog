@@ -28,6 +28,13 @@
         <li class="wechat"><a :href="config.social.wechat" target="__blank"><i class="iconfont icon-wechat"></i></a></li>
         <li class="mail"><a :href="config.social.mail" target="__blank"><i class="iconfont icon-mail"></i></a></li>
       </ul>
+
+      <ul class="mobile-menus">
+        <li><a class="actived" href="#">主页</a></li>
+        <li><a href="#">标签</a></li>
+        <li><a href="#">分类</a></li>
+        <li><a href="#">关于</a></li>
+      </ul>
     </div>
     <div class="desc">
       @流君酱的部落阁
@@ -85,7 +92,6 @@ $mail-bg: #ffd95c;
 }
 
 .author {
-  width: 300px;
   text-align: center;
   margin: 20px 0;
   .title {
@@ -171,7 +177,8 @@ $mail-bg: #ffd95c;
   border-radius: 50%;
   position: absolute;
   top: 115px;
-  left: 85px;
+  left: 50%;
+  margin-left: -65px;
   img {
     width: 120px;
     border: 5px solid #fff;
@@ -192,5 +199,66 @@ $mail-bg: #ffd95c;
   text-align: center;
   bottom: 20px;
   color: #d9d9da;
+}
+
+.mobile-menus {
+  display: none;
+  width: 80%;
+  margin: 20px auto;
+  border: 1px solid #a0a0a0;
+  border-radius: 3px;
+  li {
+    flex: 1;
+    text-align: center;
+    display: flex;
+    a {
+      color: #a0a0a0;
+      display: inline-block;
+      font-size: 14px;
+      width: 100%;
+      padding: 5px;
+    }
+    a.actived {
+      background-color: #a0a0a0;
+      color: #fff;
+    }
+  }
+  li + li {
+    border-left: 1px solid #a0a0a0;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .navbar {
+    width: 100%;
+    height: 340px;
+  }
+  .overlay {
+    height: 110px;
+  }
+
+  .content {
+    margin-top: 35px;
+  }
+
+  .user-avatar {
+    top: 10px;
+  }
+  .social {
+    width: 200px;
+    margin: 0 auto;
+  }
+  .smart-menu {
+    display: none;
+  }
+  .desc {
+    display: none;
+  }
+  .menus {
+    display: none;
+  }
+  .mobile-menus {
+    display: flex;
+  }
 }
 </style>

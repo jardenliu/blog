@@ -11370,6 +11370,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 var _default = {
   props: {
     config: {
@@ -11453,7 +11460,9 @@ exports.default = _default;
             [_c("i", { staticClass: "iconfont icon-mail" })]
           )
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _vm._m(3)
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "desc" }, [_vm._v("\n    @流君酱的部落阁\n  ")])
@@ -11490,6 +11499,24 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("ul", { staticClass: "smart-menu" }, [
       _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("所有文章")])])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("ul", { staticClass: "mobile-menus" }, [
+      _c("li", [
+        _c("a", { staticClass: "actived", attrs: { href: "#" } }, [
+          _vm._v("主页")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("标签")])]),
+      _vm._v(" "),
+      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("分类")])]),
+      _vm._v(" "),
+      _c("li", [_c("a", { attrs: { href: "#" } }, [_vm._v("关于")])])
     ])
   }
 ]
@@ -11576,6 +11603,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
 console.log('config', _config.default);
 var _default = {
   components: {
@@ -11608,14 +11637,27 @@ exports.default = _default;
     [
       _c("navbar", { attrs: { config: _vm.headerConfig } }),
       _vm._v(" "),
-      _c("div", { staticStyle: { width: "calc(100vw - 300px)" } }, [
-        _vm._v("正文")
-      ])
+      _vm._m(0)
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "content" }, [
+      _c(
+        "div",
+        {
+          staticStyle: { background: "white", margin: "30px", padding: "20px" }
+        },
+        [_vm._v("正文")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
           return {
@@ -14303,7 +14345,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51789" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54252" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
