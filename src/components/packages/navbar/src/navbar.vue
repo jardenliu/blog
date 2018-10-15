@@ -1,6 +1,9 @@
 <template>
   <div class="navbar" :style="navbarSty">
     <div class="overlay" :style="overlaySty"></div>
+    <div class="overlay-bar" :style="overlaySty">
+      <img :src="avatarSrc">
+    </div>
     <div class="user-avatar">
       <img :src="avatarSrc">
     </div>
@@ -228,6 +231,10 @@ $mail-bg: #ffd95c;
   }
 }
 
+.overlay-bar {
+  display: none;
+}
+
 @media screen and (max-width: 800px) {
   .navbar {
     width: 100%;
@@ -259,6 +266,24 @@ $mail-bg: #ffd95c;
   }
   .mobile-menus {
     display: flex;
+  }
+
+  .scrolled-to-body {
+    .overlay-bar {
+      position: fixed;
+      display: block;
+      z-index: 1;
+      height: 50px;
+      width: 100%;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
   }
 }
 </style>
