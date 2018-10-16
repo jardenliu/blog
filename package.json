@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "push": "dev build test",
-    "start": "parcel src/index.html -d doc",
+    "start": "parcel src/index.html",
     "build": "dev build test",
+    "preview": "parcel build src/index.html -d ./preview --public-url ./blog/preview/",
     "test": "dev build test"
   },
   "alias": {

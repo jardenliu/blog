@@ -11008,7 +11008,7 @@ function getOuterHTML(el) {
 Vue.compile = compileToFunctions;
 module.exports = Vue;
 },{}],"assets/logo.jpg":[function(require,module,exports) {
-module.exports = "/logo.ed8fc6de.jpg";
+module.exports = "blog/dist/logo.ed8fc6de.jpg";
 },{}],"../node_modules/throttle-debounce/index.esm.js":[function(require,module,exports) {
 "use strict";
 
@@ -14486,7 +14486,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60029" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61828" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -14629,4 +14629,4 @@ function hmrAccept(bundle, id) {
   });
 }
 },{}]},{},["../node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.js"], null)
-//# sourceMappingURL=/src.e31bb0bc.map
+//# sourceMappingURL=blog/dist/src.e31bb0bc.map
