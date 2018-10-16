@@ -1,7 +1,7 @@
 <template>
   <div class="app">
     <navbar :config="headerConfig"></navbar>
-    <div class="content">
+    <!-- <div  >
       <div class="article" style=" height:1000px">
         <div v-html="frist"></div>
       </div>
@@ -9,8 +9,8 @@
       <div class="article" style=" height:1000px">
         正文2
       </div>
-    </div>
-    <!-- <router-view></router-view> -->
+    </div> -->
+    <router-view class="content"></router-view>
   </div>
 </template>
 
@@ -55,12 +55,6 @@ export default {
 .content {
   width: calc(100vw - 300px);
   margin-left: 300px;
-}
-
-.article {
-  background: white;
-  margin: 30px;
-  padding: 20px;
 }
 
 @media screen and (max-width: 800px) {

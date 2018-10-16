@@ -1,14 +1,27 @@
 <template>
   <ul class="mobile-menus">
     <!-- class="actived" -->
-    <li v-for="(menu,name) in menus" :key="name"><a :href="menu.href">{{menu.name}}</a></li>
+    <li v-for="(menu,name) in menus" :key="name"><a :class="{'actived':currentRoute ==name}" :href="menu.href">{{menu.name}}</a></li>
   </ul>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      currentRoute: 'home'
+    }
+  },
   props: {
     menus: Object
+  },
+  mounted() {
+    this.setActived()
+  },
+  methods: {
+    setActived() {
+      this.currentRoute = this.$route.fullPath.replace('/', '')
+    }
   }
 
 }

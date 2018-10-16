@@ -28,7 +28,7 @@ import mobileMenu from './menus/mobileMenu'
 const MENUS = {
   home: {
     name: '主页',
-    href: '.'
+    href: '#/home'
   },
   tag: {
     name: '标签',
