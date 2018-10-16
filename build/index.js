@@ -104,30 +104,15 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   // Override the current require with this new one
   return newRequire;
-})({"../../articles.json":[function(require,module,exports) {
-module.exports = [{
-  "name": "XPS15-9560-Mojave",
-  "tags": ["hackintosh", "黑苹果"],
-  "categories": ["MacOS"],
-  "type": "github",
-  "url": "https://github.com/jardenliu/XPS15-9560-Mojave/blob/master/README.md",
-  "setTop": true
-}, {
-  "name": "wepy-simple-toast",
-  "tags": ["小程序"],
-  "categories": ["wepy"],
-  "type": "github",
-  "url": "https://github.com/jardenliu/wepy-simple-toast/blob/master/README.md",
-  "setTop": false
-}];
-},{}],"index.js":[function(require,module,exports) {
+})({"github.js":[function(require,module,exports) {
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
 var _axios = _interopRequireDefault(require("axios"));
-
-var _fs = _interopRequireDefault(require("fs"));
-
-var _articles = _interopRequireDefault(require("../../articles.json"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -182,18 +167,33 @@ const fetchGithubArticles = async articles => {
   return articles;
 };
 
-if (Object.prototype.toString.call(_articles.default) !== '[object Array]') {
+var _default = fetchGithubArticles;
+exports.default = _default;
+},{}],"index.js":[function(require,module,exports) {
+"use strict";
+
+var _fs = _interopRequireDefault(require("fs"));
+
+var _path = _interopRequireDefault(require("path"));
+
+var _github = _interopRequireDefault(require("./github"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+let articleConfigs = require(_path.default.join(__dirname, '..', 'articles.json'));
+
+if (Object.prototype.toString.call(articleConfigs) !== '[object Array]') {
   process.exit(0);
 }
 
 const fetchArticles = async config => {
   let githubArticles = config.filter(art => art.type === 'github');
-  let githubArts = await fetchGithubArticles(githubArticles);
+  let githubArts = await (0, _github.default)(githubArticles);
   let articleDatebase = [...githubArts];
 
-  _fs.default.writeFileSync('./database.json', JSON.stringify(articleDatebase));
+  _fs.default.writeFileSync(_path.default.join(__dirname, '..', 'database.json'), JSON.stringify(articleDatebase));
 };
 
-fetchArticles(_articles.default).catch(err => console.log(err));
-},{"../../articles.json":"../../articles.json"}]},{},["index.js"], null)
+fetchArticles(articleConfigs).catch(err => console.log(err));
+},{"./github":"github.js"}]},{},["index.js"], null)
 //# sourceMappingURL=/index.map

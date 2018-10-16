@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "push": "dev build test",
-    "start": "parcel src/index.html",
-    "build": "dev build test",
+    "start": " parcel src/index.html",
+    "update": " parcel src/fecth/index.js --target node -d build",
+    "fetch": "nodemon ./build/index.js",
     "preview": "parcel build src/index.html -d ./preview --public-url ./",
     "test": "dev build test"
   },
@@ -47,6 +48,7 @@
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.2.0",
     "axios": "^0.18.0",
+    "nodemon": "^1.18.4",
     "parcel-bundler": "^1.10.3",
     "sass": "^1.14.2",
     "vue-template-compiler": "^2.5.17"
