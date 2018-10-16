@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.2.0",
+    "axios": "^0.18.0",
     "parcel-bundler": "^1.10.3",
     "sass": "^1.14.2",
     "vue-template-compiler": "^2.5.17"

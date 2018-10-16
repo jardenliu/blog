@@ -1,0 +1,27 @@
+[
+  {
+    "name": "XPS15-9560-Mojave",
+    "tags": [
+      "hackintosh",
+      "黑苹果"
+    ],
+    "categories": [
+      "MacOS"
+    ],
+    "type": "github",
+    "url": "https://github.com/jardenliu/XPS15-9560-Mojave/blob/master/README.md",
+    "setTop": true
+  },
+  {
+    "name": "wepy-simple-toast",
+    "tags": [
+      "小程序"
+    ],
+    "categories": [
+      "wepy"
+    ],
+    "type": "github",
+    "url": "https://github.com/jardenliu/wepy-simple-toast/blob/master/README.md",
+    "setTop": false
+  }
+]
