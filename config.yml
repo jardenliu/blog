@@ -10,3 +10,7 @@ header:
     wechat: 
     mail: mailto:jarden@qq.com
 
+
+data:
+  json: https://raw.githubusercontent.com/jardenliu/blog/master/database.json
+

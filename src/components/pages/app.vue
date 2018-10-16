@@ -3,7 +3,7 @@
     <navbar :config="headerConfig"></navbar>
     <div class="content">
       <div class="article" style=" height:1000px">
-        正文1
+        <div v-html="frist"></div>
       </div>
 
       <div class="article" style=" height:1000px">
@@ -17,9 +17,7 @@
 <script>
 import navbar from 'components/packages/navbar'
 import config from '../../../config.yml'
-import { throttle, debounce } from 'throttle-debounce';
-
-console.log('config', config)
+import { marked } from 'src/units'
 
 export default {
   components: { navbar },
@@ -29,24 +27,23 @@ export default {
     }
   },
   created() {
+    this.$store.dispatch('getBlogData')
+
   },
-  mounted() {
-    // this.bindWindowScrollEvent()
-  },
-  methods: {
-    bindWindowScrollEvent() {
-      window.addEventListener('scroll', throttle(50, this.handleScroll))
+  computed: {
+    blogData() {
+      return this.$store.state.blogData || []
     },
-    handleScroll(e) {
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      if (scrollTop > 110) {
-        document.body.classList.add('scrolled-to-body')
-      } else {
-        document.body.classList.remove('scrolled-to-body')
-      }
+    frist() {
+      let f = this.blogData[0] || {}
+      return f.content ? marked(f.content) : ''
     }
   },
+  mounted() {
+  },
 
+  methods: {
+  },
 }
 </script>
 

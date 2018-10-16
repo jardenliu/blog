@@ -1,40 +1,17 @@
 <template>
   <div class="navbar" :style="navbarSty">
-    <div class="overlay" :style="overlaySty"></div>
-    <div class="user-avatar">
-      <img :src="avatarSrc" :style="avatarSty">
-    </div>
+    <overlay :config="config"></overlay>
     <div class="content">
       <div class="author">
         <div class="title">流君酱</div>
         <div class="subtitle">jardenliu</div>
       </div>
-      <ul class="menus">
-        <li><a href="#">主页</a></li>
-        <li><a href="#">标签</a></li>
-        <li><a href="#">分类</a></li>
-        <li><a href="#">关于</a></li>
-      </ul>
+      <pc-menu :menus="menuCfg"></pc-menu>
       <ul class="smart-menu">
         <li><a href="#">所有文章</a></li>
-        <!-- <li><a href="#">标签</a></li> -->
-        <!-- <li><a href="#">分类</a></li> -->
-        <!-- <li><a href="#">关于</a></li> -->
       </ul>
-
-      <ul class="social">
-        <li class="github"><a :href="config.social.github" target="__blank"><i class="iconfont icon-githublogo"></i></a></li>
-        <li class="qq"><a :href="config.social.qq" target="__blank"><i class="iconfont icon-qq"></i></a></li>
-        <li class="wechat"><a :href="config.social.wechat" target="__blank"><i class="iconfont icon-wechat"></i></a></li>
-        <li class="mail"><a :href="config.social.mail" target="__blank"><i class="iconfont icon-mail"></i></a></li>
-      </ul>
-
-      <ul class="mobile-menus">
-        <li><a class="actived" href="#">主页</a></li>
-        <li><a href="#">标签</a></li>
-        <li><a href="#">分类</a></li>
-        <li><a href="#">关于</a></li>
-      </ul>
+      <social :config="config"></social>
+      <mobile-menu :menus="menuCfg"></mobile-menu>
     </div>
     <div class="desc">
       @流君酱的部落阁
@@ -43,14 +20,35 @@
 </template>
 
 <script>
-import logoUrl from 'assets/logo.jpg'
-import { throttle, debounce } from 'throttle-debounce';
+import overlay from './overlay'
+import social from './social'
+import pcMenu from './menus/pcMenu'
+import mobileMenu from './menus/mobileMenu'
+
+const MENUS = {
+  home: {
+    name: '主页',
+    href: '.'
+  },
+  tag: {
+    name: '标签',
+    href: '#/tags'
+  },
+  category: {
+    name: '分类',
+    href: '#/categories'
+  },
+  about: {
+    name: '关于',
+    href: '#/about'
+  }
+}
 
 export default {
+  components: { overlay, social, mobileMenu, pcMenu },
   data() {
     return {
-      overlayHeight: 110,
-      avatarSize: 120
+      menuCfg: MENUS
     }
   },
   props: {
@@ -59,16 +57,7 @@ export default {
       default: () => { }
     }
   },
-  mounted() {
-    window.addEventListener('scroll', throttle(10, this.handleScroll))
-  },
   methods: {
-    handleScroll(e) {
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-      let top = scrollTop < 60 ? 110 - scrollTop : 50;
-      this.overlayHeight = scrollTop < 60 ? 110 - scrollTop : 50;
-      this.avatarSize = scrollTop < 80 ? 120 - scrollTop : 40;
-    }
   },
   computed: {
     navbarSty() {
@@ -76,29 +65,6 @@ export default {
         'background': this.config.bg
       }
     },
-    overlaySty() {
-      return {
-        'height': `${this.overlayHeight}px`,
-        'background-color': this.config.overlay,
-        'background-image': this.config.img ? `url(${this.config.img})` : ''
-      }
-    },
-    avatarSrc() {
-      return this.config.avatar ? this.config.avatar : logoUrl
-    },
-    navbarSty() {
-      return {
-        'background': this.config.bg
-      }
-    },
-    avatarSty() {
-      return {
-        'height': `${this.avatarSize}px`,
-        'width': `${this.avatarSize}px`,
-        'top': `${5 + (this.avatarSize - 40) / 80 * 5}px`,
-        'border-width': `${(this.avatarSize - 40) / 80 * 4 + 1}px`,
-      }
-    }
   }
 }
 </script>
@@ -106,21 +72,15 @@ export default {
 <style lang="scss" scoped>
 @import "~src/styles/_var";
 
-$github-bg: #24292e;
-$qq-bg: #ce2e27;
-$wechat-bg: #67c23a;
-$mail-bg: #ffd95c;
-
 .navbar {
   width: 300px;
   height: 100vh;
   background: #fff;
   position: fixed;
 }
-.overlay {
-  width: 100%;
-  height: 180px;
-  background-size: 100% 100%;
+
+.content {
+  margin-top: 75px;
 }
 
 .author {
@@ -138,17 +98,6 @@ $mail-bg: #ffd95c;
   }
 }
 
-.menus {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  li {
-    margin: 5px 0;
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-
 .smart-menu {
   display: flex;
   margin: 30px 30px;
@@ -157,69 +106,6 @@ $mail-bg: #ffd95c;
     font-size: 14px;
     line-height: 20px;
   }
-}
-
-.social {
-  display: flex;
-  margin: 30px 30px;
-  justify-content: space-around;
-  li {
-    line-height: 1;
-    display: inline-flex;
-    padding: 6px;
-    border-radius: 50%;
-    &.github {
-      background: $github-bg;
-      &:hover {
-        background: tint($github-bg, 70%);
-      }
-    }
-
-    &.qq {
-      background: $qq-bg;
-      &:hover {
-        background: tint($qq-bg, 70%);
-      }
-    }
-
-    &.wechat {
-      background: $wechat-bg;
-      &:hover {
-        background: tint($wechat-bg, 70%);
-      }
-    }
-
-    &.mail {
-      background: $mail-bg;
-      &:hover {
-        background: tint($mail-bg, 70%);
-      }
-    }
-
-    i {
-      font-size: 18px;
-      color: white;
-    }
-  }
-}
-
-.user-avatar {
-  width: 100%;
-  position: absolute;
-  top: 115px;
-  display: flex;
-  justify-content: center;
-  img {
-    width: 120px;
-    border: 5px solid #fff;
-    background-size: 100% 100%;
-    height: 120px;
-    border-radius: 50%;
-  }
-}
-
-.content {
-  margin-top: 75px;
 }
 
 .desc {
@@ -231,89 +117,21 @@ $mail-bg: #ffd95c;
   color: #d9d9da;
 }
 
-.mobile-menus {
-  display: none;
-  width: 80%;
-  margin: 20px auto;
-  border: 1px solid #a0a0a0;
-  border-radius: 3px;
-  li {
-    flex: 1;
-    text-align: center;
-    display: flex;
-    a {
-      color: #a0a0a0;
-      display: inline-block;
-      font-size: 14px;
-      width: 100%;
-      padding: 5px;
-    }
-    a.actived {
-      background-color: #a0a0a0;
-      color: #fff;
-    }
-  }
-  li + li {
-    border-left: 1px solid #a0a0a0;
-  }
-}
-
-.overlay-bar {
-  display: none;
-}
-
-@media screen and (min-width: 800px) {
-  .overlay {
-    height: 180px !important;
-  }
-
-  .user-avatar {
-    img {
-      width: 120px !important;
-      height: 120px !important;
-      border-width: 5px !important;
-    }
-  }
-}
-
 @media screen and (max-width: 800px) {
   .navbar {
     width: 100%;
     height: 340px;
     position: relative;
   }
-  .overlay {
-    height: 110px;
-    position: fixed;
-    background-size: 100% 180px;
-  }
-
   .content {
     margin-top: 145px;
   }
 
-  .user-avatar {
-    top: 0;
-    position: fixed;
-    img {
-      position: absolute;
-    }
-  }
-  .social {
-    width: 200px;
-    margin: 0 auto;
-  }
   .smart-menu {
     display: none;
   }
   .desc {
     display: none;
-  }
-  .menus {
-    display: none;
-  }
-  .mobile-menus {
-    display: flex;
   }
 }
 </style>

@@ -38,12 +38,18 @@
   "homepage": "https://github.com/jardenliu/blog#readme",
   "dependencies": {
     "assets": "^3.0.0",
+    "babel-polyfill": "^6.26.0",
     "components": "^0.1.0",
+    "highlight.js": "^9.13.0",
+    "marked": "^0.5.1",
+    "overlay": "^1.2.5",
     "reset-css": "^4.0.1",
     "throttle-debounce": "^2.0.1",
+    "units": "^3.0.2",
     "vue": "^2.5.17",
     "vue-hot-reload-api": "^2.3.1",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.2.0",
