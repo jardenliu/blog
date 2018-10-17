@@ -115,6 +115,7 @@ export default {
   text-align: center;
   bottom: 20px;
   color: #d9d9da;
+  user-select: none;
 }
 
 @media screen and (max-width: 800px) {

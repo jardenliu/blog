@@ -1,6 +1,8 @@
 import dateDiff from './dateDiff'
 
-let filters = {}
+let filters = {
+  dateDiff
+}
 
 filters.install = (Vue) => {
   Vue.filter('dateDiff', dateDiff)

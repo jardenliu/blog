@@ -1,6 +1,9 @@
 <template>
   <div class="article">
-    <HeaderBar :label="title" :date="updatedDate"></HeaderBar>
+    <HeaderBar :label="title"
+               :type="type"
+               :view-more="viewMore"
+               :date="updatedDate"></HeaderBar>
     <div class="article-content">
       <slot></slot>
     </div>
@@ -15,6 +18,8 @@ export default {
   components: { HeaderBar, FooterBar },
   props: {
     title: String,
+    type: String,
+    viewMore: Boolean,
     updatedDate: [Date, String, Number]
   }
 

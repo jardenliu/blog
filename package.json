@@ -43,6 +43,7 @@
     "highlight.js": "^9.13.0",
     "marked": "^0.5.1",
     "overlay": "^1.2.5",
+    "primer-markdown": "^3.7.9",
     "reset-css": "^4.0.1",
     "throttle-debounce": "^2.0.1",
     "units": "^3.0.2",

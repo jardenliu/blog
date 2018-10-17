@@ -1,8 +1,10 @@
 <template>
   <div>
-    <div class="overlay" :style="overlaySty"></div>
+    <div class="overlay"
+         :style="overlaySty"></div>
     <div class="user-avatar">
-      <img :src="avatarSrc" :style="avatarSty">
+      <img :src="avatarSrc"
+           :style="avatarSty">
     </div>
   </div>
 </template>
@@ -25,10 +27,14 @@ export default {
   },
   mounted() {
     window.addEventListener('scroll', throttle(10, this.handleScroll))
+    // setInterval(() => this.handleScroll(), 10)
   },
   methods: {
     handleScroll(e) {
-      let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      const el = document.scrollingElement || document.documentElement;
+
+      // let scrollTop = window.pageYOffset || document.scrollingElement.scrollTop || document.documentElement.scrollTop || document.body.scrollTop
+      let scrollTop = el.scrollTop
       let top = scrollTop < 60 ? 110 - scrollTop : 50;
       this.overlayHeight = scrollTop < 60 ? 110 - scrollTop : 50;
       this.avatarSize = scrollTop < 80 ? 120 - scrollTop : 40;
