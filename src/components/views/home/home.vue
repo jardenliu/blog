@@ -1,7 +1,13 @@
 <template>
   <div>
-    <Article :title="art.name" :view-more="true" type="article" :updated-date="art.updatedDate" v-for="art in articles" :key="art.name">
-      <md-view :shrink="true" :source="art.content"></md-view>
+    <Article :title="art.name"
+             :view-more="true"
+             type="article"
+             :updated-date="art.updatedDate"
+             v-for="art in articles"
+             :key="art.name">
+      <md-view :shrink="true"
+               :source="art.content"></md-view>
     </Article>
   </div>
 </template>

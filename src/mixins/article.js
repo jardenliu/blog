@@ -4,7 +4,7 @@ export default {
       if (this.isLink) {
         this.$router.push({
           name: 'article',
-          query: {
+          params: {
             name: this.label
           }
         })

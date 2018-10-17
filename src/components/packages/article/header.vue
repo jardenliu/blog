@@ -3,7 +3,8 @@
     <div class="article-header-label"
          :class="{'islink':isLink}"
          @click="goArticle">{{label}}</div>
-    <div class="article-header-right">{{displayDate | dateDiff }}</div>
+    <div class="article-header-right"><i class="iconfont icon-time"
+         style="margin-right:5px"></i>{{displayDate | dateDiff }}</div>
   </div>
 </template>
 
@@ -65,8 +66,9 @@ export default {
     border-left: none;
     border-bottom: 1px dotted $light-border-color;
     margin-bottom: 10px;
+    font-weight: 400;
     .article-header-label {
-      font-size: 18px;
+      font-size: 30px;
       line-height: 40px;
       color: $primary-text-color;
     }

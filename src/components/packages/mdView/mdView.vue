@@ -1,6 +1,8 @@
 <template>
-  <div class="markdown-view" :style="styles">
-    <div class="markdown-body" v-html="content">
+  <div class="markdown-view"
+       :style="styles">
+    <div class="markdown-body"
+         v-html="content">
     </div>
   </div>
 </template>
@@ -24,7 +26,7 @@ export default {
     shrink: Boolean,
     source: {
       type: String,
-      required: true
+      default: ''
     }
   }
 }

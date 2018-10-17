@@ -42,6 +42,7 @@
     "components": "^0.1.0",
     "highlight.js": "^9.13.0",
     "marked": "^0.5.1",
+    "nice-color-palettes": "^2.0.0",
     "overlay": "^1.2.5",
     "primer-markdown": "^3.7.9",
     "reset-css": "^4.0.1",

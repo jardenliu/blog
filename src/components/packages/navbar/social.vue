@@ -1,9 +1,13 @@
 <template>
   <ul class="social">
-    <li class="github"><a :href="config.social.github" target="__blank"><i class="iconfont icon-githublogo"></i></a></li>
-    <li class="qq"><a :href="config.social.qq" target="__blank"><i class="iconfont icon-qq"></i></a></li>
-    <li class="wechat"><a :href="config.social.wechat" target="__blank"><i class="iconfont icon-wechat"></i></a></li>
-    <li class="mail"><a :href="config.social.mail" target="__blank"><i class="iconfont icon-mail"></i></a></li>
+    <li class="github"><a :href="config.social.github"
+         target="__blank"><i class="iconfont icon-github"></i></a></li>
+    <li class="qq"><a :href="config.social.qq"
+         target="__blank"><i class="iconfont icon-qq"></i></a></li>
+    <li class="wechat"><a :href="config.social.wechat"
+         target="__blank"><i class="iconfont icon-wechat"></i></a></li>
+    <li class="mail"><a :href="config.social.mail"
+         target="__blank"><i class="iconfont icon-mail"></i></a></li>
   </ul>
 </template>
 

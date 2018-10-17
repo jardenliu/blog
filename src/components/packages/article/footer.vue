@@ -1,13 +1,17 @@
 <template>
   <div class="article-footer">
-    <div class="article-footer-left">标签1、标签2</div>
+    <div class="article-footer-left">
+      <div class="article-tags"> <i class="iconfont icon-tag"></i><a>标签1</a></div>
+      <div class="article-categories"><i class="iconfont icon-category"></i><a>分类1</a></div>
+    </div>
     <div class="article-footer-right">
-      <button class="view-more">展开全文</button>
+      <button class="view-more">展开全文<i class="iconfont icon-more"></i></button>
     </div>
   </div>
 </template>
 
 <script>
+import color from 'nice-color-palettes'
 export default {
 
 }
@@ -28,8 +32,35 @@ export default {
   line-height: 1.25;
 
   .article-footer-left {
+    display: flex;
+    i {
+      margin: 0 5px;
+    }
   }
   .article-footer-right {
+  }
+}
+
+.article-categories {
+  margin-left: 10px;
+}
+
+.view-more {
+  background: #4d4d4d;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 8px 5px;
+  line-height: 16px;
+  cursor: pointer;
+  border-radius: 2px;
+  border: none;
+  transition: background 0.3s;
+  i {
+    font-size: 12px;
+    margin-left: 3px;
+  }
+  &:focus {
+    outline: none;
   }
 }
 

@@ -11,6 +11,7 @@ html,body{
 a {
   text-decoration: none;
   color: $regular-text-color;
+  cursor: pointer;
   &:hover {
     color: tint($regular-text-color, 20%);
   }

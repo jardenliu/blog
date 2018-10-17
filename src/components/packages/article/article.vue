@@ -43,7 +43,7 @@ export default {
     padding: 10px;
   }
   .article-content {
-    padding: 10px 0;
+    padding: 10px;
   }
 }
 </style>
