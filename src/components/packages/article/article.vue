@@ -4,6 +4,9 @@
                :type="type"
                :view-more="viewMore"
                :is-link="isLink"
+               :is-reprint="config.reprint"
+               :author="config.author"
+               :root-url="config.root"
                :date="config.updatedDate"></HeaderBar>
     <div class="article-content">
       <slot></slot>

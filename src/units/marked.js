@@ -5,7 +5,7 @@ import 'highlight.js/styles/github.css'
 marked.setOptions({
   renderer: new marked.Renderer(),
   highlight: function (code) {
-    let c = highlight.highlightAuto(code, ['javascript', 'bash']);
+    let c = highlight.highlightAuto(code, ['javascript', 'bash', 'xml']);
     return c.value
   },
   pedantic: false,

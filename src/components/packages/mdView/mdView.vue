@@ -14,7 +14,11 @@ const SHRINK_HEIGHT = 400
 export default {
   computed: {
     content() {
-      return marked(this.source)
+      return marked(this.handledSource)
+    },
+    handledSource() {
+      let src = this.source.replace(/\-\-\-[\s\S]*\-\-\-/g, '')
+      return src
     },
     styles() {
       return {
