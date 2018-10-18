@@ -5,7 +5,13 @@ import * as api from 'src/api'
 let state = {
   blogData: []
 }
-let getters = {}
+let getters = {
+  sortedList(state, getter) {
+    let list = state.blogData.sort((a, b) => new Date(a.updatedDate).getTime() > new Date(b.updatedDate).getTime())
+    list = list.sort((a, b) => a.setTop)
+    return list
+  }
+}
 let mutations = {
   setBlogData: (state, data) => {
     state.blogData = data

@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{sortedList}}
     <Article :view-more="true"
              type="article"
              :config="art"
@@ -21,6 +22,9 @@ export default {
     MdView
   },
   computed: {
+    sortedList() {
+      return this.$store.getters.sortedList
+    },
     articles() {
       return this.$store.state.blogData;
     }
