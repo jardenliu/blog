@@ -1,13 +1,17 @@
 <template>
   <div class="article">
-    <HeaderBar :label="title"
+    <HeaderBar :label="config.name"
                :type="type"
                :view-more="viewMore"
-               :date="updatedDate"></HeaderBar>
+               :is-link="isLink"
+               :date="config.updatedDate"></HeaderBar>
     <div class="article-content">
       <slot></slot>
     </div>
-    <FooterBar></FooterBar>
+    <FooterBar :label="config.name"
+               :is-link="isLink"
+               :categories="config.categories"
+               :tags="config.tags"></FooterBar>
   </div>
 </template>
 
@@ -17,10 +21,14 @@ import FooterBar from './footer.vue'
 export default {
   components: { HeaderBar, FooterBar },
   props: {
-    title: String,
+    config: Object,
     type: String,
-    viewMore: Boolean,
-    updatedDate: [Date, String, Number]
+    viewMore: Boolean
+  },
+  computed: {
+    isLink() {
+      return this.type == "article" && this.viewMore
+    }
   }
 
 }
@@ -30,6 +38,12 @@ export default {
 .article {
   background: white;
   margin: 30px;
+  ul {
+    list-style-type: disc;
+  }
+  ol {
+    list-style-type: decimal;
+  }
 }
 
 .article-content {

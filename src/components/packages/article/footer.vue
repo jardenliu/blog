@@ -1,19 +1,45 @@
 <template>
   <div class="article-footer">
+    <div class="more-mask"
+         v-show="isLink"></div>
     <div class="article-footer-left">
-      <div class="article-tags"> <i class="iconfont icon-tag"></i><a>标签1</a></div>
-      <div class="article-categories"><i class="iconfont icon-category"></i><a>分类1</a></div>
+      <div class="article-tags"> <i class="iconfont icon-tag"></i>
+        <tag class="article-tag tag-link"
+             router="tag"
+             :label="tag"
+             v-for="(tag,index) in tags"
+             :key="index">{{tag}}</tag>
+      </div>
+      <div class="article-categories"><i class="iconfont icon-category"></i>
+        <tag class="article-category tag-link"
+             router="category"
+             :label="category"
+             v-for="(category,index) in categories"
+             :key="index">{{category}}</tag>
+      </div>
     </div>
     <div class="article-footer-right">
-      <button class="view-more">展开全文<i class="iconfont icon-more"></i></button>
+      <button class="view-more"
+              v-if="isLink"
+              @click="goArticle(label)">展开全文<i class="iconfont icon-more"></i></button>
     </div>
   </div>
 </template>
 
 <script>
 import color from 'nice-color-palettes'
-export default {
+import articleMixin from 'src/mixins/article'
+import tag from 'components/packages/tag'
 
+export default {
+  components: { tag },
+  mixins: [articleMixin],
+  props: {
+    label: String,
+    isLink: Boolean,
+    tags: Array,
+    categories: Array,
+  }
 }
 </script>
 
@@ -21,6 +47,7 @@ export default {
 @import "~src/styles/_var";
 
 .article-footer {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -33,12 +60,26 @@ export default {
 
   .article-footer-left {
     display: flex;
+    max-width: calc(100% - 100px);
     i {
       margin: 0 5px;
     }
   }
   .article-footer-right {
   }
+}
+
+.more-mask {
+  position: absolute;
+  background: -webkit-linear-gradient(
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 1)
+  );
+  width: 100%;
+  height: 100px;
+  top: -102px;
 }
 
 .article-categories {
@@ -75,6 +116,10 @@ export default {
     margin-top: 10px;
     font-size: 14px;
     .article-footer-left {
+      display: block;
+      .article-categories {
+        margin-left: 0;
+      }
     }
     .article-footer-right {
     }

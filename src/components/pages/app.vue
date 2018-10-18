@@ -1,26 +1,21 @@
 <template>
   <div class="app">
     <navbar :config="headerConfig"></navbar>
-    <!-- <div  >
-      <div class="article" style=" height:1000px">
-        <div v-html="frist"></div>
-      </div>
-
-      <div class="article" style=" height:1000px">
-        正文2
-      </div>
-    </div> -->
-    <router-view class="content"></router-view>
+    <div class="content">
+      <router-view class="page"></router-view>
+      <copyright></copyright>
+    </div>
   </div>
 </template>
 
 <script>
 import navbar from 'components/packages/navbar'
+import copyright from 'components/packages/copyright'
 import config from '../../../config.yml'
 import { marked } from 'src/units'
 
 export default {
-  components: { navbar },
+  components: { navbar, copyright },
   data() {
     return {
       headerConfig: config.header || {}
@@ -57,10 +52,18 @@ export default {
   margin-left: 300px;
 }
 
+.page {
+  min-height: calc(100vh - 57px);
+}
+
 @media screen and (max-width: 800px) {
   .app {
     display: flex;
     flex-direction: column;
+  }
+
+  .page {
+    min-height: calc(100vh - 390px);
   }
 
   .article {

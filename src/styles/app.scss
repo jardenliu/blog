@@ -3,6 +3,9 @@
 @import 'iconfont';
 @import "primer-markdown/index.scss";
 
-.app {
-  
+.tag-link{
+  &+.tag-link{
+    margin-left:5px; 
+  }
+  font-size: 16px;
 }

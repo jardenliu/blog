@@ -2,33 +2,27 @@
   <div class="article-header">
     <div class="article-header-label"
          :class="{'islink':isLink}"
-         @click="goArticle">{{label}}</div>
+         @click="goArticle(label)">{{label}}</div>
     <div class="article-header-right"><i class="iconfont icon-time"
-         style="margin-right:5px"></i>{{displayDate | dateDiff }}</div>
+         style="margin-right:5px"></i>{{date | dateDiff }}</div>
   </div>
 </template>
 
 <script>
-import article from 'src/mixins/article'
+import articleMixin from 'src/mixins/article'
+
 export default {
-  mixins: [article],
+  mixins: [articleMixin],
   props: {
     label: String,
     type: String,
-    viewMore: Boolean,
+    isLink: Boolean,
     date: [Date, String, Number]
   },
   methods: {
 
   },
-  computed: {
-    isLink() {
-      return this.type == "article" && this.viewMore
-    },
-    displayDate() {
-      return this.date
-    }
-  }
+
 }
 </script>
 

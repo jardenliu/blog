@@ -4,7 +4,6 @@
   "description": "just a blog",
   "main": "index.js",
   "scripts": {
-    "push": "dev build test",
     "start": " parcel src/index.html",
     "update": " parcel src/fecth/index.js --target node -d build",
     "fetch": "nodemon ./build/index.js",

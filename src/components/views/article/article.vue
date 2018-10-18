@@ -1,9 +1,7 @@
 <template>
   <div>
-    <Article :title="article.name"
-             type="article"
-             :updated-date="article.updatedDate"
-             :key="article.name">
+    <Article type="article"
+             :config="article">
       <md-view :source="article.content"></md-view>
     </Article>
   </div>

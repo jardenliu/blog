@@ -1,5 +1,6 @@
 <template>
-  <div class="navbar" :style="navbarSty">
+  <div class="navbar"
+       :style="navbarSty">
     <overlay :config="config"></overlay>
     <div class="content">
       <div class="author">
@@ -8,7 +9,7 @@
       </div>
       <pc-menu :menus="menuCfg"></pc-menu>
       <ul class="smart-menu">
-        <li><a href="#">所有文章</a></li>
+        <li><a href="#/article">所有文章</a></li>
       </ul>
       <social :config="config"></social>
       <mobile-menu :menus="menuCfg"></mobile-menu>
@@ -32,11 +33,11 @@ const MENUS = {
   },
   tag: {
     name: '标签',
-    href: '#/tags'
+    href: '#/tag'
   },
   category: {
     name: '分类',
-    href: '#/categories'
+    href: '#/category'
   },
   about: {
     name: '关于',
@@ -77,6 +78,7 @@ export default {
   height: 100vh;
   background: #fff;
   position: fixed;
+  z-index: 999;
 }
 
 .content {

@@ -1,9 +1,8 @@
 <template>
   <div>
-    <Article :title="art.name"
-             :view-more="true"
+    <Article :view-more="true"
              type="article"
-             :updated-date="art.updatedDate"
+             :config="art"
              v-for="art in articles"
              :key="art.name">
       <md-view :shrink="true"
