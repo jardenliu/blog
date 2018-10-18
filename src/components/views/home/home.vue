@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{sortedList}}
     <Article :view-more="true"
              type="article"
              :config="art"

@@ -11,8 +11,13 @@ const getGithubArticleConfig = async (url) => {
       let pageStr = res.data
       let rawUrlStrArr = pageStr.match(/(?<=id=\"raw-url\".*href=\").*(?=\">Raw<\/a>)/g)
       let rawUrl = rawUrlStrArr && rawUrlStrArr.length > 0 ? 'https://github.com' + rawUrlStrArr[0] : false
-      let dateTimeStrArr = pageStr.match(/(?<=datetime=\").*(?=\">)/g)
+      let dateTimeStrArr = pageStr.match(/(?<=datetime\=\").*(?=\">)/g)
       let updatedDate = dateTimeStrArr && dateTimeStrArr.length > 0 ? dateTimeStrArr[0] : ''
+
+      if (dateTimeStrArr == null) {
+        return getGithubArticleConfig(url)
+      }
+
       return {
         rawUrl,
         updatedDate
