@@ -1,0 +1,17 @@
+[
+  {
+    "name": "blog",
+    "tags": [
+      "blog"
+    ],
+    "categories": [
+      "article"
+    ],
+    "type": "github",
+    "url": "https://github.com/jardenliu/blog/blob/master/README.md",
+    "setTop": true,
+    "reprint": true,
+    "root": "https://github.com/jardenliu/blog/blob/master/README.md",
+    "author": "jardenliu"
+  }
+]
