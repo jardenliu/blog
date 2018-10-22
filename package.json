@@ -2,12 +2,16 @@
   "name": "blog",
   "version": "0.0.1",
   "description": "just a blog",
+  "staticPath": [
+    ".database"
+  ],
   "main": "index.js",
   "scripts": {
     "start": " parcel src/index.html",
-    "update": " parcel src/fecth/index.js --target node -d build",
-    "fetch": "nodemon ./build/index.js",
+    "fetch": "babel-node  --presets env fetch/index.js",
+    "fetch:auto": "babel-node  --presets env fetch/auto.js",
     "preview": "rm -rf preview && parcel build src/index.html -d ./preview --public-url ./",
+    "build": "rm -rf www && parcel build src/index.html -d ./www --public-url ./",
     "test": "dev build test"
   },
   "alias": {
@@ -37,10 +41,11 @@
   "homepage": "https://github.com/jardenliu/blog#readme",
   "dependencies": {
     "assets": "^3.0.0",
-    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "components": "^0.1.0",
     "highlight.js": "^9.13.0",
     "marked": "^0.5.1",
+    "mkdirp": "^0.5.1",
     "nice-color-palettes": "^2.0.0",
     "overlay": "^1.2.5",
     "primer-markdown": "^3.7.9",
@@ -55,8 +60,14 @@
   "devDependencies": {
     "@vue/component-compiler-utils": "^2.2.0",
     "axios": "^0.18.0",
+    "babel-cli": "^6.26.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-register": "^6.26.0",
+    "node-schedule": "^1.3.0",
+    "nodejs-base64": "^1.0.3",
     "nodemon": "^1.18.4",
     "parcel-bundler": "^1.10.3",
+    "parcel-plugin-static-files-copy": "^1.2.4",
     "sass": "^1.14.2",
     "vue-template-compiler": "^2.5.17"
   }

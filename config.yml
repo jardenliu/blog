@@ -12,5 +12,5 @@ header:
 
 
 data:
-  json: https://raw.githubusercontent.com/jardenliu/blog/master/database.json
+  #json: https://raw.githubusercontent.com/jardenliu/blog/master/database.json
 

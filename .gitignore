@@ -1,6 +1,8 @@
 .cache
 node_modules/
 dist/
+.database/
 
 #articles.json
 database.json
+www/
