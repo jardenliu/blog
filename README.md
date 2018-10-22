@@ -1,6 +1,6 @@
 # Blog
 
-## Getting Started
+## Getting Started
 1. Clone code into your workspace dir.
 ```bash
   $ git clone https://github.com/jardenliu/blog.git
