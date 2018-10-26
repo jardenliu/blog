@@ -7,7 +7,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "start": " parcel src/index.html",
+    "start": " parcel src/index.html --open",
     "fetch": "babel-node  --presets env fetch/index.js",
     "fetch:auto": "babel-node  --presets env fetch/auto.js",
     "preview": "rm -rf preview && parcel build src/index.html -d ./preview --public-url ./",
@@ -42,6 +42,7 @@
   "dependencies": {
     "assets": "^3.0.0",
     "babel-preset-env": "^1.7.0",
+    "color-scheme": "^1.0.1",
     "components": "^0.1.0",
     "highlight.js": "^9.13.0",
     "marked": "^0.5.1",

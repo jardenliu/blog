@@ -3,7 +3,7 @@
     <Article :view-more="true"
              type="article"
              :config="art"
-             v-for="art in articles"
+             v-for="art in sortedList"
              :key="art.name">
       <md-view :shrink="true"
                :source="art.content"></md-view>
@@ -26,6 +26,9 @@ export default {
     },
     articles() {
       return this.$store.state.blogData;
+    },
+    colorSchemes() {
+      return this.$store.getters.colorSchemes;
     }
   }
 

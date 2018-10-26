@@ -4,16 +4,18 @@
          v-show="isLink"></div>
     <div class="article-footer-left">
       <div class="article-tags"> <i class="iconfont icon-tag"></i>
-        <tag class="article-tag tag-link"
+        <tag class="article-tag"
              router="tag"
              :label="tag"
+             :color="colorSchemes[tag]"
              v-for="(tag,index) in tags"
              :key="index">{{tag}}</tag>
       </div>
       <div class="article-categories"><i class="iconfont icon-category"></i>
-        <tag class="article-category tag-link"
+        <tag class="article-category"
              router="category"
              :label="category"
+             :color="colorSchemes[category]"
              v-for="(category,index) in categories"
              :key="index">{{category}}</tag>
       </div>
@@ -34,6 +36,11 @@ import tag from 'components/packages/tag'
 export default {
   components: { tag },
   mixins: [articleMixin],
+  computed: {
+    colorSchemes() {
+      return this.$store.getters.colorSchemes;
+    }
+  },
   props: {
     label: String,
     isLink: Boolean,
@@ -60,6 +67,7 @@ export default {
 
   .article-footer-left {
     display: flex;
+    align-items: center;
     max-width: calc(100% - 100px);
     i {
       margin: 0 5px;
@@ -81,9 +89,15 @@ export default {
   height: 100px;
   top: -102px;
 }
+.article-tags {
+  display: flex;
+  align-items: center;
+}
 
 .article-categories {
+  display: flex;
   margin-left: 10px;
+  align-items: center;
 }
 
 .view-more {

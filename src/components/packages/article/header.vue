@@ -1,10 +1,14 @@
 <template>
   <div>
-    <div class="article-header">
+    <div class="article-header"
+         :class="{'set-top':setTop}">
       <div class="article-header-label "
-           :class="{'islink':isLink,'small-title':isLongTitle}"
+           :class="{'islink':isLink,'set-top':setTop,'small-title':isLongTitle}"
            @click="goArticle(label)">{{label}}</div>
-      <div class="article-header-right"><i class="iconfont icon-time"
+      <div class="article-header-right">
+        <span class="set-top-tip"
+              v-if="setTop"><i class="iconfont icon-pin-fill"></i></span>
+        <i class="iconfont icon-time"
            style="margin-right:5px"></i>{{date | dateDiff }}</div>
     </div>
     <div class="article-header-mark">
@@ -27,6 +31,7 @@ export default {
     author: String,
     rootUrl: String,
     isLink: Boolean,
+    setTop: Boolean,
     date: [Date, String, Number]
   },
   methods: {
@@ -51,6 +56,7 @@ export default {
   align-content: center;
   padding: 30px 60px 15px 55px;
   border-left: 5px solid #4d4d4d;
+
   .article-header-label {
     font-size: 30px;
     max-width: calc(100% - 96px);
@@ -66,6 +72,19 @@ export default {
   .article-header-right {
     color: $placeholder-text-color;
     font-size: 14px;
+  }
+
+  .set-top-tip {
+    font-size: 12px;
+    border-radius: 3px;
+    display: inline-block;
+    padding: 2px 4px;
+    background: $secondary-text-color;
+    color: #fff;
+    position: relative;
+    margin-left: 10px;
+    height: 16px;
+    line-height: 16px;
   }
 }
 

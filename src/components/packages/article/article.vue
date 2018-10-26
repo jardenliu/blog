@@ -4,6 +4,7 @@
                :type="type"
                :view-more="viewMore"
                :is-link="isLink"
+               :set-top="config.setTop"
                :is-reprint="config.reprint"
                :author="config.author"
                :root-url="config.root"
