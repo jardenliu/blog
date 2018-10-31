@@ -8,7 +8,8 @@
            v-for="art in artcles"
            :key="art.name">
         <div class="article-class-art-title">
-          <div class="left"> {{art.name}}</div>
+          <div class="left"
+               @click="goArticle(art.name)"> {{art.name}}</div>
           <div class="right"> 2018-10-31</div>
         </div>
         <div class="article-class-art-tags">
@@ -36,8 +37,16 @@
 
 <script>
 import tag from 'components/packages/tag'
+import articleMixin from 'src/mixins/article'
+
 
 export default {
+  mixins: [articleMixin],
+  data() {
+    return {
+      isLink: true
+    }
+  },
   components: {
     tag
   },
@@ -88,6 +97,7 @@ export default {
     justify-content: space-between;
     .left {
       font-size: 18px;
+      cursor: pointer;
     }
   }
   .article-class-art-tags {
@@ -97,6 +107,32 @@ export default {
     min-height: 28px;
     align-items: center;
     justify-content: flex-end;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .article-class {
+    display: block;
+    padding: 0 10px;
+    border-top: 10px #eaeaea solid;
+
+    & + .article-class {
+      border-top: 10px #eaeaea solid;
+    }
+    .article-class-label {
+      font-size: 24px;
+      padding-top: 10px;
+      color: #666;
+      min-width: 180px;
+      font-weight: 400;
+    }
+    .article-class-item {
+      padding: 10px 0;
+    }
+    .article-class-art-title {
+      display: block;
+      height: auto;
+    }
   }
 }
 </style>

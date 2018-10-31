@@ -38,7 +38,7 @@ export default {
 
 @media screen and (max-width: 800px) {
   .paragraph {
-    padding: 0;
+    padding: 0 10px;
     .paragrph-label {
       height: 28px;
       font-size: 24px;

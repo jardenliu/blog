@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="article">
+    <div class="article tag-page">
       <paragraph label="全部标签">
         <div class="tag-row">
           <tag class="article-tag"
@@ -54,5 +54,10 @@ export default {
   display: flex;
   height: 40px;
   align-items: center;
+}
+@media screen and (max-width: 800px) {
+  .tag-page {
+    padding: 10px 0;
+  }
 }
 </style>
