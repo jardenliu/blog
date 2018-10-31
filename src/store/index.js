@@ -24,7 +24,29 @@ let getters = {
       count++
     })
     return schemes;
-  }
+  },
+  tagArtcles(state) {
+    let tagArtcles = {};
+    state.blogData.map(item => {
+      item.tags && item.tags.map(tag => {
+        tagArtcles[tag] = tagArtcles[tag] || []
+        tagArtcles[tag].push(item)
+      })
+    })
+    return tagArtcles
+  },
+  tags(state, getters) {
+    return Object.keys(getters.tagArtcles)
+  },
+  categories(state) {
+    let categories = {};
+    state.blogData.map(item => {
+      item.tags && item.categories.map(category => categories[category] = true)
+    })
+    return Object.keys(categories)
+  },
+
+
 }
 let mutations = {
   setBlogData: (state, data) => {

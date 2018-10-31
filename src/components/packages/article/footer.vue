@@ -92,10 +92,12 @@ export default {
 .article-tags {
   display: flex;
   align-items: center;
+  line-height: 24px;
 }
 
 .article-categories {
   display: flex;
+  line-height: 24px;
   margin-left: 10px;
   align-items: center;
 }

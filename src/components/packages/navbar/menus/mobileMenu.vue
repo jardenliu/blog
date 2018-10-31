@@ -1,7 +1,9 @@
 <template>
   <ul class="mobile-menus">
     <!-- class="actived" -->
-    <li v-for="(menu,name) in menus" :key="name"><a :class="{'actived':currentRoute ==name}" :href="menu.href">{{menu.name}}</a></li>
+    <li v-for="(menu,name) in menus"
+        :key="name"><a :class="{'actived':currentRoute ==name}"
+         :href="menu.href">{{menu.name}}</a></li>
   </ul>
 </template>
 
@@ -18,9 +20,15 @@ export default {
   mounted() {
     this.setActived()
   },
+  watch: {
+    $route() {
+      this.setActived()
+    }
+  },
   methods: {
     setActived() {
       this.currentRoute = this.$route.fullPath.replace('/', '')
+      console.log('this.currentRoute', this.currentRoute)
     }
   }
 

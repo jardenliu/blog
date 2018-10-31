@@ -12,28 +12,28 @@ Vue.use(VueRouter);
 
 let tag = [
   {
+    name: 'allTags',
+    path: '/tag',
+    component: Tag
+  }, {
     name: 'tag',
     path: '/tag/:name',
     component: Tag
-  },
-  {
-    name: 'allTags',
-    path: '/tag',
-    component: Category
   }
 ]
 
 let category = [
   {
+    name: 'allCategories',
+    path: '/category',
+    component: Category
+  },
+  {
     name: 'category',
     path: '/category/:name',
     component: Category
   },
-  {
-    name: 'allCategories',
-    path: '/category',
-    component: Category
-  }
+
 ]
 
 let article = [

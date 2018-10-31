@@ -53,7 +53,7 @@ export default {
 }
 
 .page {
-  min-height: calc(100vh - 57px);
+  min-height: calc(100vh - 89px);
 }
 
 @media screen and (max-width: 800px) {

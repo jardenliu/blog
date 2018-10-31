@@ -54,11 +54,18 @@ export default {
   padding: 20px 60px;
 }
 
+.mix-article {
+  margin-top: -30px;
+}
+
 @media screen and (max-width: 800px) {
   .article {
     background: white;
     margin: 10px 0;
     padding: 10px;
+  }
+  .mix-article {
+    margin-top: 10px;
   }
   .article-content {
     padding: 10px;
