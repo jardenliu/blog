@@ -9,42 +9,42 @@
 </template>
 
 <script>
-import navbar from 'components/packages/navbar'
-import copyright from 'components/packages/copyright'
-import config from '../../../config.yml'
-import { marked } from 'src/units'
+import navbar from "components/packages/navbar";
+import copyright from "components/packages/copyright";
+import config from "../../../config.yml";
+import { marked } from "src/units";
 
 export default {
   components: { navbar, copyright },
   data() {
     return {
+      $scroll: null,
       headerConfig: config.header || {}
-    }
+    };
   },
   created() {
-    this.$store.dispatch('getBlogData')
-
+    this.$store.dispatch("getBlogData");
   },
   computed: {
     blogData() {
-      return this.$store.state.blogData || []
+      return this.$store.state.blogData || [];
     },
     frist() {
-      let f = this.blogData[0] || {}
-      return f.content ? marked(f.content) : ''
+      let f = this.blogData[0] || {};
+      return f.content ? marked(f.content) : "";
     }
   },
   mounted() {
   },
 
-  methods: {
-  },
-}
+  methods: {}
+};
 </script>
 
 <style lang="scss" scoped>
 .app {
   display: flex;
+  overflow: hidden;
 }
 
 .content {

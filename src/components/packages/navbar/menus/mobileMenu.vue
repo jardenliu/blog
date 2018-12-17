@@ -27,8 +27,9 @@ export default {
   },
   methods: {
     setActived() {
-      this.currentRoute = this.$route.fullPath.replace('/', '')
-      console.log('this.currentRoute', this.currentRoute)
+      const reg = /^\/([a-zA-Z0-9]*)($|\/.*)/
+      const matched = this.$route.fullPath.match(reg)
+      this.currentRoute = matched ? matched[1] : ''
     }
   }
 

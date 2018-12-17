@@ -113,7 +113,7 @@ export default {
 @media screen and (max-width: 800px) {
   .article-class {
     display: block;
-    padding: 0 10px;
+    padding: 10px 16px;
     border-top: 10px #eaeaea solid;
 
     & + .article-class {
@@ -121,9 +121,11 @@ export default {
     }
     .article-class-label {
       font-size: 24px;
-      padding-top: 10px;
+      padding-top: 5px;
+      padding-bottom: 15px;
       color: #666;
       min-width: 180px;
+      border-bottom: 1px #d2d2d2 solid;
       font-weight: 400;
     }
     .article-class-item {
@@ -131,7 +133,17 @@ export default {
     }
     .article-class-art-title {
       display: block;
+      padding: 10px 0px;
       height: auto;
+      .left{
+        margin-bottom: 5px;
+
+      }
+      .right{
+        text-align: right;
+        font-size: 13px;
+        color:$secondary-text-color 
+      }
     }
   }
 }
