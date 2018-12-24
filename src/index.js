@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import "babel-polyfill"
 import router from './router'
 import filters from 'src/filters';
 import store from './store'

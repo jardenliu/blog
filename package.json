@@ -2,25 +2,14 @@
   "name": "blog",
   "version": "0.0.1",
   "description": "just a blog",
-  "staticPath": [
-    ".database"
-  ],
   "main": "index.js",
   "scripts": {
-    "start": " parcel src/index.html --open",
-    "fetch": "babel-node  --presets env fetch/index.js",
-    "fetch:auto": "babel-node  --presets env fetch/auto.js",
+    "start": "webpack-dev-server --mode=development",
+    "fetch": "babel-node --presets @babel/env fetch/index.js",
+    "fetch:auto": "babel-node --presets @babel/env fetch/auto.js",
     "preview": "rm -rf preview && parcel build src/index.html -d ./preview --public-url ./",
-    "build": "rm -rf www && parcel build src/index.html -d ./www --public-url ./",
+    "build": "rm -rf dist && webpack --mode=production",
     "test": "dev build test"
-  },
-  "alias": {
-    "vue": "./node_modules/vue/dist/vue.common.js",
-    "components": "./src/components/",
-    "assets": "./src/assets/",
-    "src": "./src/",
-    "styles": "./src/styles/",
-    "@": "./src"
   },
   "repository": {
     "type": "git",
@@ -40,8 +29,7 @@
   },
   "homepage": "https://github.com/jardenliu/blog#readme",
   "dependencies": {
-    "assets": "^3.0.0",
-    "babel-preset-env": "^1.7.0",
+    "axios": "^0.18.0",
     "better-scroll": "^1.13.2",
     "color-scheme": "^1.0.1",
     "components": "^0.1.0",
@@ -53,24 +41,30 @@
     "primer-markdown": "^3.7.9",
     "reset-css": "^4.0.1",
     "throttle-debounce": "^2.0.1",
-    "units": "^3.0.2",
     "vue": "^2.5.17",
     "vue-hot-reload-api": "^2.3.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^2.2.0",
-    "axios": "^0.18.0",
-    "babel-cli": "^6.26.0",
-    "babel-polyfill": "^6.26.0",
-    "babel-register": "^6.26.0",
-    "node-schedule": "^1.3.0",
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/polyfill": "^7.2.5",
+    "@babel/preset-env": "^7.2.3",
+    "babel-loader": "^8.0.4",
+    "copy-webpack-plugin": "^4.6.0",
+    "css-loader": "^2.0.2",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
     "nodejs-base64": "^1.0.3",
-    "nodemon": "^1.18.4",
-    "parcel-bundler": "^1.10.3",
-    "parcel-plugin-static-files-copy": "^1.2.4",
-    "sass": "^1.14.2",
-    "vue-template-compiler": "^2.5.17"
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "vue-loader": "^15.4.2",
+    "vue-template-compiler": "^2.5.21",
+    "webpack": "^4.28.2",
+    "webpack-cli": "3",
+    "webpack-dev-server": "^3.1.14",
+    "yml-loader": "^2.1.0"
   }
 }

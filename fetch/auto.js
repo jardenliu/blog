@@ -1,4 +1,4 @@
-require("babel-register")()
+require("@babel/register")()
 import path from 'path'
 import schedule from 'node-schedule'
 import fetch from './fetch'

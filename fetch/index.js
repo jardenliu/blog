@@ -1,4 +1,4 @@
-require("babel-register")()
+require("@babel/register")()
 import path from 'path'
 import fetch from './fetch'
 
