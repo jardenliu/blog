@@ -1,0 +1,16 @@
+# 头部（侧边栏）
+header:
+  bg: '#fff' #背景色,默认#fff
+  overlay: '#4d4d4d' #图片区域背景色
+  img: https://jarden-image-storage.oss-cn-shenzhen.aliyuncs.com/gallery/starrySky.png
+  avatar: https://jarden-image-storage.oss-cn-shenzhen.aliyuncs.com/gallery/15191056.jpg
+  social:
+    github: https://github.com/jardenliu
+    qq: http://wpa.qq.com/msgrd?v=3&uin=372002582&site=qq&menu=yes
+    wechat: 
+    mail: mailto:jarden@qq.com
+
+
+data:
+  #json: https://raw.githubusercontent.com/jardenliu/blog/master/database.json
+

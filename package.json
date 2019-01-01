@@ -1,0 +1,31 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "My splendid Nuxt.js blog",
+  "author": "jardenliu",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.0.0",
+    "cross-env": "^5.2.0",
+    "koa": "^2.5.2",
+    "nuxt": "^2.0.0",
+    "primer-markdown": "^3.7.11",
+    "reset-css": "^4.0.1",
+    "throttle-debounce": "^2.0.1"
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-prettier": "2.6.2",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.11.0",
+    "prettier": "1.14.3",
+    "sass-loader": "^7.1.0",
+    "yml-loader": "^2.1.0"
+  }
+}

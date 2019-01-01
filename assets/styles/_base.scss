@@ -1,0 +1,45 @@
+@import './var';
+
+html,
+body {
+  height: 100%;
+  background: #eaeaea;
+  color: $primary-text-color;
+  -webkit-overflow-scrolling: touch;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: $regular-text-color;
+  cursor: pointer;
+
+  &:hover {
+    color: tint($regular-text-color, 20%);
+  }
+
+  &:active {
+    color: shade($regular-text-color, 5%);
+  }
+}
+
+
+::-webkit-scrollbar-track-piece {
+  background-color: #f8f8f8;
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  background-clip: padding-box;
+  border-radius: 3px;
+  min-height: 28px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #c2c2c2;
+}
