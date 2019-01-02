@@ -13,10 +13,9 @@
 import Logo from '~/components/Logo.vue'
 import Navbar from '~/components/packages/navbar'
 import copyright from '~/components/packages/copyright'
+import config from '~/config/config.yml'
 
-import config from '../config.yml'
 import 'reset-css/reset.css'
-
 import '~/assets/styles/app.scss'
 
 export default {
