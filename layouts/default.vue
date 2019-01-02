@@ -28,6 +28,9 @@ export default {
     return {
       headerConfig: config.header || {}
     }
+  },
+  created() {
+    this.$store.dispatch('getBlogData')
   }
 }
 </script>
