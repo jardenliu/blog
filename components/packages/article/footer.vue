@@ -30,8 +30,8 @@
 
 <script>
 import color from 'nice-color-palettes'
-import articleMixin from 'src/mixins/article'
-import tag from 'components/packages/tag'
+import articleMixin from '~/core/mixins/article'
+import tag from '~/components/packages/tag'
 
 export default {
   components: { tag },

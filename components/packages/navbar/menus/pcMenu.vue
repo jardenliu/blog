@@ -1,7 +1,8 @@
 <template>
   <ul class="menus">
-    <li v-for="(menu,name) in menus"
-      :key="name"><a :href="menu.href">{{menu.name}}</a></li>
+    <nuxt-link tag="li" v-for="(menu,name) in menus" :key="name" :to="menu.href">
+      <a >{{menu.name}}</a>
+    </nuxt-link>
   </ul>
 </template>
 

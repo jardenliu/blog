@@ -1,5 +1,5 @@
-import * as api from '~/api'
-import colors from '~/units/colorScheme'
+import * as api from '~/core/api'
+import colors from '~/core/units/colorScheme'
 
 export const state = () => ({
   blogData: []

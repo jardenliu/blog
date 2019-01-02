@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { marked } from 'src/units'
+import { marked } from '~/core/units'
 const SHRINK_HEIGHT = 400
 
 export default {

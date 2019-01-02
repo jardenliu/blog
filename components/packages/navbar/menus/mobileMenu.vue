@@ -1,9 +1,9 @@
 <template>
   <ul class="mobile-menus">
     <!-- class="actived" -->
-    <li v-for="(menu,name) in menus"
-      :key="name"><a :class="{'actived':currentRoute ==name}"
-        :href="menu.href">{{menu.name}}</a></li>
+    <nuxt-link tag="li" v-for="(menu,name) in menus" :key="name" :to="menu.href">
+        <a :class="{'actived':currentRoute ==name}">{{menu.name}}</a>
+    </nuxt-link>
   </ul>
 </template>
 
@@ -27,8 +27,13 @@ export default {
   },
   methods: {
     setActived() {
+      const fullPath = this.$route.fullPath
+      if (fullPath === '/') {
+        this.currentRoute = 'home'
+        return
+      }
       const reg = /^\/([a-zA-Z0-9]*)($|\/.*)/
-      const matched = this.$route.fullPath.match(reg)
+      const matched = fullPath.match(reg)
       this.currentRoute = matched ? matched[1] : ''
     }
   }

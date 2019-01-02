@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import articleMixin from 'src/mixins/article'
+import articleMixin from '~/core/mixins/article'
 
 export default {
   mixins: [articleMixin],

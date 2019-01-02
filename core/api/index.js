@@ -1,5 +1,5 @@
 import { get } from '../units/http'
-import config from '../config/config.yml'
+import config from '~/config/config.yml'
 
 let sourcePath =
   config && config.data && config.data.json

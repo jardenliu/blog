@@ -1,33 +1,34 @@
 <template>
   <div class="article-class">
-    <div class="article-class-label">
-      {{name}}
-    </div>
+    <div class="article-class-label">{{name}}</div>
     <div class="article-class-list">
-      <div class="article-class-item"
-        v-for="art in artcles"
-        :key="art.name">
+      <div class="article-class-item" v-for="art in artcles" :key="art.name">
         <div class="article-class-art-title">
-          <div class="left"
-            @click="goArticle(art.name)"> {{art.name}}</div>
-          <div class="right"> 2018-10-31</div>
+          <div class="left" @click="goArticle(art.name)">{{art.name}}</div>
+          <div class="right">2018-10-31</div>
         </div>
         <div class="article-class-art-tags">
-          <div class="article-tags"> <i class="iconfont icon-tag"></i>
-            <tag class="article-tag"
+          <div class="article-tags">
+            <i class="iconfont icon-tag"></i>
+            <tag
+              class="article-tag"
               router="tag"
               :label="tag"
               :color="colorSchemes[tag]"
               v-for="(tag,index) in art.tags"
-              :key="index">{{tag}}</tag>
+              :key="index"
+            >{{tag}}</tag>
           </div>
-          <div class="article-categories"><i class="iconfont icon-category"></i>
-            <tag class="article-category"
+          <div class="article-categories">
+            <i class="iconfont icon-category"></i>
+            <tag
+              class="article-category"
               router="category"
               :label="category"
               :color="colorSchemes[category]"
               v-for="(category,index) in art.categories"
-              :key="index">{{category}}</tag>
+              :key="index"
+            >{{category}}</tag>
           </div>
         </div>
       </div>
@@ -36,8 +37,8 @@
 </template>
 
 <script>
-import tag from 'components/packages/tag'
-import articleMixin from 'src/mixins/article'
+import tag from '~/components/packages/tag'
+import articleMixin from '~/core/mixins/article'
 
 export default {
   mixins: [articleMixin],
@@ -89,6 +90,20 @@ export default {
       border-top: 1px $base-border-color solid;
     }
   }
+
+  .article-tags {
+    display: flex;
+    align-items: center;
+    line-height: 24px;
+  }
+
+  .article-categories {
+    display: flex;
+    line-height: 24px;
+    margin-left: 10px;
+    align-items: center;
+  }
+
   .article-class-art-title {
     display: flex;
     align-items: center;

@@ -29,19 +29,19 @@ import mobileMenu from './menus/mobileMenu'
 const MENUS = {
   home: {
     name: '主页',
-    href: '#/home'
+    href: '/'
   },
   tag: {
     name: '标签',
-    href: '#/tag'
+    href: '/tag'
   },
   category: {
     name: '分类',
-    href: '#/category'
+    href: '/category'
   },
   about: {
     name: '关于',
-    href: '#/about'
+    href: '/about'
   }
 }
 
