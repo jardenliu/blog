@@ -1,4 +1,3 @@
-
 const Koa = require('koa')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
@@ -23,10 +22,7 @@ async function start() {
 
   app.use(ctx => {
     ctx.status = 200 // koa defaults to 404 when it sees that status is unset
-    console.log(222)
-
     return new Promise((resolve, reject) => {
-    console.log(123)
       ctx.res.on('close', resolve)
       ctx.res.on('finish', resolve)
       nuxt.render(ctx.req, ctx.res, promise => {

@@ -9,7 +9,7 @@
         <span class="set-top-tip"
           v-if="setTop"><i class="iconfont icon-pin-fill"></i></span>
         <i class="iconfont icon-time"
-          style="margin-right:5px"></i>{{date | dateDiff }}</div>
+          style="margin-right:5px"></i><span>{{date | dateDiff }}</span></div>
     </div>
     <div class="article-header-mark">
       <div v-if="isReprint">
@@ -37,7 +37,7 @@ export default {
   methods: {},
   computed: {
     isLongTitle() {
-      return this.label.length > 30
+      return this.label && this.label.length > 30
     }
   }
 }
