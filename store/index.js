@@ -57,8 +57,11 @@ export let mutations = {
   }
 }
 export let actions = {
+  async nuxtServerInit({ commit }) {
+    commit('setBlogData', require('~/static/.database/data.json'))
+  },
   getBlogData: ({ commit, state }) => {
-    api.getBlogData().then(data => {
+    return api.getBlogData().then(data => {
       commit('setBlogData', data)
     })
   }

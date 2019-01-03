@@ -6,7 +6,6 @@
   "private": true,
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
-    "dev2": "cross-env NODE_ENV=development nodemon server/index2.js --watch server",
     "build": "nuxt build",
     "fetch": "babel-node --presets @babel/env server/fetch/index.js",
     "fetch:auto": "babel-node --presets @babel/env server/fetch/auto.js",

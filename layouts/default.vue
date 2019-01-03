@@ -30,7 +30,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('getBlogData')
+    // this.$store.dispatch('getBlogData')
   }
 }
 </script>
