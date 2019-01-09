@@ -39,6 +39,17 @@ export let getters = {
     })
     return tagArtcles
   },
+  categoryArtcles(state) {
+    let categoryArtcles = {}
+    state.blogData.map(item => {
+      item.categories &&
+        item.categories.map(category => {
+          categoryArtcles[category] = categoryArtcles[category] || []
+          categoryArtcles[category].push(item)
+        })
+    })
+    return categoryArtcles
+  },
   tags(state, getters) {
     return Object.keys(getters.tagArtcles)
   },
