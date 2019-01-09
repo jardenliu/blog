@@ -1,9 +1,7 @@
 const pkg = require('./package')
-
 module.exports = {
   mode: 'universal',
 
- 
   /*
   ** Headers of the page
   */
@@ -46,16 +44,7 @@ module.exports = {
     // See https://github.com/nuxt-community/axios-module#options
   },
 
-  routeParams: {
-    '/users/:id': function () {
-      console.log(666)
-      return axios.get(YOUR_API_URL)
-      .then((res) =>{
-         // res.data should be like [{id: 1}, {id: 2}...]
-         return res.data
-      })
-    }
- },
+  buildDir: process.env.NODE_ENV === 'production' ? 'output' : '.nuxt',
 
   /*
   ** Build configuration

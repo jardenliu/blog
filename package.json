@@ -10,7 +10,8 @@
     "fetch": "babel-node --presets @babel/env server/fetch/index.js",
     "fetch:auto": "babel-node --presets @babel/env server/fetch/auto.js",
     "start": "npm run fetch && npm run dev",
-    "live": "nuxt build && cross-env PORT=8080 nuxt start",
+    "live": "nuxt start  --port=8080",
+    "deploy": "nuxt build && rm -rf dist && cp -rf .nuxt dist",
     "generate": "nuxt generate"
   },
   "dependencies": {
