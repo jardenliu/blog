@@ -1,3 +1,6 @@
+name: '流君酱的部落格'
+description: '流君酱的部落格'
+
 # 头部（侧边栏）
 header:
   bg: '#fff' #背景色,默认#fff
