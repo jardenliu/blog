@@ -1,0 +1,27 @@
+[
+  {
+    "name": "XPS15 9560 Clover 安装配置",
+    "tags": ["hackintosh", "黑苹果"],
+    "categories": ["MacOS"],
+    "type": "github",
+    "url": "https://github.com/jardenliu/XPS15-9560-Mojave/blob/master/README.md"
+  },
+  {
+    "name": "wepy吐司组件：wepy-simple-toast",
+    "tags": ["小程序"],
+    "categories": ["wepy"],
+    "type": "github",
+    "url": "https://github.com/jardenliu/wepy-simple-toast/blob/master/README.md",
+    "setTop": true
+  },
+  {
+    "name": "Coffee-Lake帧缓冲区补丁及UHD630-Coffee-Lake-ig-platform-id数据整理",
+    "tags": ["hackintosh", "黑苹果"],
+    "categories": ["MacOS"],
+    "type": "github",
+    "url": "https://github.com/daliansky/daliansky.github.io/blob/hexo/source/_posts/Coffee-Lake%E5%B8%A7%E7%BC%93%E5%86%B2%E5%8C%BA%E8%A1%A5%E4%B8%81%E5%8F%8AUHD630-Coffee-Lake-ig-platform-id%E6%95%B0%E6%8D%AE%E6%95%B4%E7%90%86.md",
+    "reprint": true,
+    "root": "https://blog.daliansky.net/Coffee-Lake-frame-buffer-patch-and-UHD630-Coffee-Lake-ig-platform-id-data-finishing.html",
+    "author": "daliansky"
+  }
+]

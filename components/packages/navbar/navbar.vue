@@ -38,11 +38,11 @@ const MENUS = {
   category: {
     name: '分类',
     href: '/category'
-  },
-  about: {
-    name: '关于',
-    href: '/about'
   }
+  // about: {
+  //   name: '关于',
+  //   href: '/about'
+  // }
 }
 
 export default {
