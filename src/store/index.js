@@ -1,5 +1,6 @@
 import * as api from '~/core/api'
 import colors from '~/core/units/colorScheme'
+import axios from 'axios'
 
 export const state = () => ({
   blogData: []
@@ -69,7 +70,8 @@ export let mutations = {
 }
 export let actions = {
   async nuxtServerInit({ commit }) {
-    commit('setBlogData', require('~/static/.database/data.json'))
+    let res = await axios.get('http://127.0.0.1:8888/data')
+    commit('setBlogData', res.data)
   },
   getBlogData: ({ commit, state }) => {
     return api.getBlogData().then(data => {
@@ -77,15 +79,3 @@ export let actions = {
     })
   }
 }
-
-// Vue.use(Vuex)
-// export default new Vuex.Store({
-//   strict: process.env.NODE_ENV !== 'production', // 使用严格模式,
-//   getters,
-//   state,
-//   actions,
-//   mutations,
-//   modules: {
-//     // User
-//   }
-// })

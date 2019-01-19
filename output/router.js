@@ -2,11 +2,11 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import { interopDefault } from './utils'
 
-const _0c22e71b = () => interopDefault(import('..\\src\\pages\\about.vue' /* webpackChunkName: "pages_about" */))
-const _6ea66560 = () => interopDefault(import('..\\src\\pages\\category.vue' /* webpackChunkName: "pages_category" */))
-const _7b53cbb0 = () => interopDefault(import('..\\src\\pages\\tag.vue' /* webpackChunkName: "pages_tag" */))
-const _52720816 = () => interopDefault(import('..\\src\\pages\\article\\_name.vue' /* webpackChunkName: "pages_article__name" */))
-const _2bdac1e0 = () => interopDefault(import('..\\src\\pages\\index.vue' /* webpackChunkName: "pages_index" */))
+const _13e8b56a = () => interopDefault(import('../src/pages/about.vue' /* webpackChunkName: "pages/about" */))
+const _9b9a8da0 = () => interopDefault(import('../src/pages/category.vue' /* webpackChunkName: "pages/category" */))
+const _3ab8a458 = () => interopDefault(import('../src/pages/tag.vue' /* webpackChunkName: "pages/tag" */))
+const _54886262 = () => interopDefault(import('../src/pages/article/_name.vue' /* webpackChunkName: "pages/article/_name" */))
+const _15c38010 = () => interopDefault(import('../src/pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 Vue.use(Router)
 
@@ -67,23 +67,23 @@ export function createRouter() {
 
     routes: [{
       path: "/about",
-      component: _0c22e71b,
+      component: _13e8b56a,
       name: "about"
     }, {
       path: "/category",
-      component: _6ea66560,
+      component: _9b9a8da0,
       name: "category"
     }, {
       path: "/tag",
-      component: _7b53cbb0,
+      component: _3ab8a458,
       name: "tag"
     }, {
       path: "/article/:name?",
-      component: _52720816,
+      component: _54886262,
       name: "article-name"
     }, {
       path: "/",
-      component: _2bdac1e0,
+      component: _15c38010,
       name: "index"
     }],
 
